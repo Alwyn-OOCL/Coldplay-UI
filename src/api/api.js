@@ -6,6 +6,9 @@ const api = axios.create({
     },
     'qa': {
         baseURL: 'https://days15-todo-backend-demo-qa.up.railway.app/'
-    }
+    },
+    'production': {
+        baseURL: 'https://days15-todo-backend-demo-production.up.railway.app/'
+    },
 }[process.env.REACT_APP_ENV || 'development']);
 export default api;
