@@ -11,7 +11,7 @@ export default function TodoList() {
 
     return (
         <div className='todo-list'>
-            <h1>Todo List</h1>
+            <h1>Todo List - Make Some Change</h1>
             <TodoGroup />
             <TodoGenerator />
         </div>
