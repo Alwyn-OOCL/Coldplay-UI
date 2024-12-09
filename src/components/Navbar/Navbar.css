@@ -1,0 +1,33 @@
+.navbar {
+  padding: 20px 0;
+  background-color: var(--background-dark);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-links {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.navbar-auth {
+  display: flex;
+  gap: 16px;
+}
+

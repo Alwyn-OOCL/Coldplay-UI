@@ -1,10 +1,10 @@
+import React from 'react';
+import Hero from '../Hero/HomePoster';
+
 const HomePage = () => {
-  return (
-    <div>
-      <h1>Home Page</h1>
-      <p>This is the home page</p>
-    </div>
-  );
+  return (<div>
+    <Hero/>
+  </div>);
 };
 
 export default HomePage;
