@@ -6,8 +6,10 @@
   background-color: black;
 }
 
+
 body {
   margin: 0;
+  width: 100vw;
 }
 
 .app > .nav-bar > nav > ul {
@@ -16,9 +18,10 @@ body {
 }
 
 .main {
-  flex: 1;
+  /* flex: 1; */
   padding: 20px;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100vw;
 }
