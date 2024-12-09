@@ -3,6 +3,11 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: black;
+}
+
+body {
+  margin: 0;
 }
 
 .app > .nav-bar > nav > ul {
@@ -10,8 +15,10 @@
   justify-content: center;
 }
 
-.app > .nav-bar > nav > ul > li {
-  padding: 10px;
-  list-style: none;
+.main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-
