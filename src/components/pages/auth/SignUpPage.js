@@ -25,11 +25,11 @@ export default function SignUpPage() {
             setError('Two Passwords do not match');
             return;
         }
-        // Handle signup logic here
         register(formData).then((response) => {
             if (response.success) {
                 setToken({token: response.data});
-                navigate('/');
+                // 跳到上一个页面
+                navigate(-1);
             } else {
                 setDuplicateError(response.errorMsg);
             }

@@ -86,6 +86,11 @@
   color: var(--text-light);
 }
 
+.auth-submit.login {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
 .auth-submit:hover {
   opacity: 0.9;
 }
