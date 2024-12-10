@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import './Auth.css';
 import {useAuth} from "../../../contexts/AuthContext";
@@ -8,21 +8,23 @@ import {login} from "../../../api/authApi";
 export default function LoginPage() {
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
+    const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
-    const { setToken } = useAuth();
+    const [error, setError] = useState('');
+    const {setToken} = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            login(email, password).then((response) => {
+        login(credential, password).then((response) => {
+            console.log(response);
+            if (response.success) {
                 setToken(response.data);
-            }).finally(() => {
                 navigate('/');
-            });
-        } catch (error) {
-            // Handle error (show error message)
-        }
+            } else {
+                setError(response.errorMsg);
+            }
+        });
+
     };
 
     return (
@@ -33,10 +35,10 @@ export default function LoginPage() {
                     <form onSubmit={handleSubmit} className="auth-form">
                         <div className="form-group">
                             <input
-                                type="email"
-                                placeholder="Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                type="text"
+                                placeholder="Email / Username"
+                                value={credential}
+                                onChange={(e) => setCredential(e.target.value)}
                                 required
                             />
                         </div>
@@ -48,10 +50,8 @@ export default function LoginPage() {
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
+                            {error && <p className="error-message">{error}</p>}
                         </div>
-                        <Link to="/forgot-password" className="forgot-password">
-                            Forgot Password?
-                        </Link>
                         <button type="submit" className="auth-button login-button">
                             Log In
                         </button>
@@ -61,7 +61,7 @@ export default function LoginPage() {
                     </p>
                 </div>
             </main>
-            <Footer />
+            <Footer/>
         </div>
     );
 }

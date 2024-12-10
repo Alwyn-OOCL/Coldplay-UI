@@ -16,8 +16,14 @@ export default function SignUpPage() {
         agreeToTerms: false
     });
 
+    const [error, setError] = useState('');
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (formData.password !== e.target.confirmPassword.value) {
+            setError('Two Passwords do not match');
+            return;
+        }
         // Handle signup logic here
         register(formData).then((response) => {
             setToken(response.data);
@@ -45,6 +51,7 @@ export default function SignUpPage() {
                         placeholder="Name"
                         value={formData.name}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
@@ -54,6 +61,7 @@ export default function SignUpPage() {
                         placeholder="Email"
                         value={formData.email}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
@@ -63,7 +71,17 @@ export default function SignUpPage() {
                         placeholder="Password"
                         value={formData.password}
                         onChange={handleChange}
+                        required
                     />
+                </div>
+                <div className="form-group">
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        required
+                    />
+                    {error && <p className="error-message">{error}</p>}
                 </div>
                 <div className="form-group checkbox">
                     <label>
@@ -72,6 +90,7 @@ export default function SignUpPage() {
                             name="agreeToTerms"
                             checked={formData.agreeToTerms}
                             onChange={handleChange}
+                            required
                         />
                         <span>
               I agree to the <Link to="/terms" className="terms-link">Terms & Conditions</Link>
