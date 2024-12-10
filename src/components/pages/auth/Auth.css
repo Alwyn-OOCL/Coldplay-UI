@@ -1,0 +1,98 @@
+.auth-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.auth-card h2 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--text-light);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input:not([type="checkbox"]) {
+  width: 100%;
+  padding: 12px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--text-gray);
+  color: var(--text-light);
+  font-size: 16px;
+}
+
+.form-group input:not([type="checkbox"]):focus {
+  outline: none;
+  border-bottom-color: var(--primary-color);
+}
+
+.form-group input::placeholder {
+  color: var(--text-gray);
+}
+
+.form-group.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.form-group.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color);
+}
+
+.forgot-password {
+  display: block;
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.terms-link {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.auth-submit {
+  background-color: var(--text-light);
+  color: var(--background-dark);
+}
+
+.auth-submit.signup {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.auth-submit:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: var(--primary-color);
+  font-size: 12px;
+  margin-top: 4px;
+}
+

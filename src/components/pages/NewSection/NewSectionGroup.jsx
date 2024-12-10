@@ -2,7 +2,7 @@ import React, {
   useState,
   useEffect
 } from 'react';
-import api from '../../../api/api';
+import baseApi from '../../../api/baseApi';
 import {Link} from 'react-router-dom';
 import NewSectionItem from './NewSectionItem';
 import './NewSectionGroup.css';
@@ -11,7 +11,7 @@ export default function NewSectionGroup () {
   const [newsItems, setNewsItems] = useState([]);
 
   useEffect(() => {
-    api.get('/newsections')
+    baseApi.get('/newsections')
       .then(response => {
         setNewsItems(response.data.data);
       })
