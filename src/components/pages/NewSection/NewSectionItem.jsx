@@ -3,11 +3,15 @@ import {Link} from 'react-router-dom';
 import './NewSectionGroup.css';
 
 const NewSectionItem = ({newsection}) => {
+  const truncatedDescription = newsection.description.length > 20
+    ? `${newsection.description.substring(0, 20)}...`
+    : newsection.description;
+
   return (
     <Link to={`/news/${newsection.id}`} className='news-item'>
       <div className='news-content'>
         <h3>{newsection.title}</h3>
-        <p>{newsection.description}</p>
+        <p>{truncatedDescription}</p>
       </div>
       <div className='news-image'>
         <img src={newsection.image} alt={newsection.title}/>

@@ -31,7 +31,7 @@ export default function NewSectionGroup () {
               <NewSectionItem key={item.id} newsection={item}/>
             ))}
           </div>
-          <Link to='/news' className='more-link'>
+          <Link to='/newsections' className='more-link'>
             More...
           </Link>
         </div>
