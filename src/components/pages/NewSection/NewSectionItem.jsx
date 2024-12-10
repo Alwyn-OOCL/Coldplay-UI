@@ -4,7 +4,7 @@ import './NewSectionGroup.css';
 
 const NewSectionItem = ({newsection}) => {
   const truncatedDescription = newsection.description.length > 20
-    ? `${newsection.description.substring(0, 20)}...`
+    ? `${newsection.description.substring(0, 40)}...`
     : newsection.description;
 
   return (
