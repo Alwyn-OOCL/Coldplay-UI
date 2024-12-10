@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import './Auth.css';
 import {useAuth} from "../../../contexts/AuthContext";
-import Footer from "../../Footer/Footer";
 import {login} from "../../../api/authApi";
 
 export default function LoginPage() {

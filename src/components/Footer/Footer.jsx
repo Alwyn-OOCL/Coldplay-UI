@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
           <div className="footer-links">
             <h3>FAQs</h3>
-            <a href="#" className='social-link'>Support</a>
+            <a href="https://www.coldplay.com" className='social-link'>Support</a>
           </div>
         </div>
       </div>
