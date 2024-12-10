@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: 'http://localhost:8080',
+const baseApi = axios.create({
+    baseURL: process.env.REACT_APP_BASE_URL || 'http://localhost:8080',
 });
 
 // Add a request interceptor
-api.interceptors.request.use(
+baseApi.interceptors.request.use(
   config => {
     // You can add any custom logic before the request is sent
     config.metadata = { startTime: new Date() }
@@ -19,7 +19,7 @@ api.interceptors.request.use(
 );
 
 // Add a response interceptor
-api.interceptors.response.use(
+baseApi.interceptors.response.use(
   response => {
     // Any status code that lie within the range of 2xx cause this function to trigger
     const duration = new Date() - response.config.metadata.startTime
@@ -33,14 +33,14 @@ api.interceptors.response.use(
     if (error.response && error.response.status === 404) {
         window.location.href = "/404-not-found"
       }
-  
+
       if (error.response && error.response.status === 500) {
         window.location.href = "/server-error"
       }
-  
+
       console.error("Response Error:", error)
     return Promise.reject(error);
   }
 );
 
-export default api;
+export default baseApi;
