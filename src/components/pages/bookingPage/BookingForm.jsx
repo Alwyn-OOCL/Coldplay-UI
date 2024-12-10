@@ -1,20 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Box, Button, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import AudienceInfo from './AudienceInfo';
 
-const BookingForm = ({ formData, handleChange, handleNext }) => {
+const BookingForm = ({ formData, handleChange, handleNext, concert }) => {
   const [errors, setErrors] = useState({});
+  const [isSaleTimeReached, setIsSaleTimeReached] = useState(false);
+  const [countdown, setCountdown] = useState('');
   const audienceOptions = Array.from({ length: 100 }, (_, i) => i + 1);
-  const areaOptions = ['VIP', 'Area 1', 'Area 2'];
+  const areaOptions = concert.areas.map(area => ({ id: area.id, name: area.areaType }));
+
+  useEffect(() => {
+    const checkSaleTime = () => {
+      const currentTime = new Date();
+      const saleTime = new Date(concert.concertSaleTime);
+      setIsSaleTimeReached(currentTime >= saleTime);
+
+      if (!isSaleTimeReached) {
+        const timeDiff = saleTime - currentTime;
+        const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        setCountdown(`${hours}h ${minutes}m ${seconds}s`);
+      }
+    };
+
+    checkSaleTime();
+    const interval = setInterval(checkSaleTime, 1000); // Check every second
+
+    return () => clearInterval(interval);
+  }, [concert.concertSaleTime, isSaleTimeReached]);
 
   const getAvailableOptions = (index) => {
     const selectedOptions = formData.areaPreferences.filter((_, i) => i !== index);
-    const availableOptions = areaOptions.filter(option => !selectedOptions.includes(option));
+    const availableOptions = areaOptions.filter(option => !selectedOptions.includes(option.id));
     if (index > 0) {
-      availableOptions.unshift('No Choose');
+      availableOptions.unshift({ id: 'noChoose', name: 'No Choose' });
     }
-    if (index === 2 && formData.areaPreferences[1] === 'No Choose') {
-      return ['No Choose'];
+    if (index > 0 && formData.areaPreferences[index - 1] === 'noChoose') {
+      return [{ id: 'noChoose', name: 'No Choose' }];
     }
     return availableOptions;
   };
@@ -22,22 +45,17 @@ const BookingForm = ({ formData, handleChange, handleNext }) => {
   const handleAreaChange = (index) => (event) => {
     const newPreferences = [...formData.areaPreferences];
     newPreferences[index] = event.target.value;
-    if (index === 1 && event.target.value === 'No Choose') {
-      newPreferences[2] = 'No Choose';
-      setErrors((prevErrors) => {
-        const newErrors = { ...prevErrors };
-        delete newErrors[`areaPreference${index}`];
-        delete newErrors[`areaPreference2`];
-        return newErrors;
-      });
-    } else {
-      setErrors((prevErrors) => {
-        const newErrors = { ...prevErrors };
-        delete newErrors[`areaPreference${index}`];
-        return newErrors;
-      });
+    if (event.target.value === 'noChoose') {
+      for (let i = index + 1; i < newPreferences.length; i++) {
+        newPreferences[i] = 'noChoose';
+      }
     }
     handleChange('areaPreferences')({ target: { value: newPreferences } });
+    setErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+      delete newErrors[`areaPreference${index}`];
+      return newErrors;
+    });
   };
 
   const validateForm = () => {
@@ -102,17 +120,17 @@ const BookingForm = ({ formData, handleChange, handleNext }) => {
           <Typography variant="h6" component="div" gutterBottom>
             Area Preferences
           </Typography>
-          {areaOptions.map((_, index) => (
+          {Array.from({ length: concert.areas.length }).map((_, index) => (
             <FormControl fullWidth key={index} error={!!errors[`areaPreference${index}`]}>
               <InputLabel>{`Priority ${index + 1}`}</InputLabel>
               <Select
-                value={formData.areaPreferences[index]}
+                value={formData.areaPreferences[index] || ''}
                 onChange={handleAreaChange(index)}
                 label={`Priority ${index + 1}`}
               >
                 {getAvailableOptions(index).map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
+                  <MenuItem key={option.id} value={option.id}>
+                    {option.name}
                   </MenuItem>
                 ))}
               </Select>
@@ -125,9 +143,14 @@ const BookingForm = ({ formData, handleChange, handleNext }) => {
             errors={errors}
             setErrors={setErrors}
           />
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
-            Book Now
+          <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!isSaleTimeReached}>
+            {isSaleTimeReached ? 'Book Now' : 'Sales Not Started'}
           </Button>
+          {!isSaleTimeReached && (
+            <Typography variant="body2" color="error" sx={{ mt: 2 }}>
+              Sales start in: {countdown}
+            </Typography>
+          )}
         </Box>
       </CardContent>
     </Card>

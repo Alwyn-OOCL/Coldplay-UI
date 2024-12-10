@@ -1,7 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import { submitBooking } from '../../../api/pages/bookingPage/bookingApi';
+import Loading from '../bookingPage/Loading';
 
-const Confirmation = ({ formData, handleNext }) => {
+const Confirmation = ({ formData, handleNext, concert }) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const response = await submitBooking({
+        concertId: formData.concertId,
+        audienceCount: formData.audienceCount,
+        areaPreferences: formData.areaPreferences.filter(preference => preference !== 'noChoose'),
+        audienceDetails: formData.audienceDetails,
+      });
+      console.log(response.data);
+      if (response.data.success) {
+        handleNext(response.data.data);
+      } else {
+        alert(response.errorMsg);
+      }
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+      alert('An error occurred while submitting the booking.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getAreaType = (areaId) => {
+    const area = concert.areas.find((area) => area.id === areaId);
+    return area ? area.areaType : 'No Choose';
+  };
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Card>
       <CardContent>
@@ -16,10 +52,12 @@ const Confirmation = ({ formData, handleNext }) => {
             <strong>Area Preferences:</strong>
           </Typography>
           <Box sx={{ pl: 2 }}>
-            {formData.areaPreferences.map((preference, index) => (
-              <Typography key={index} variant="body2" gutterBottom>
-                <strong>Priority {index + 1}:</strong> {preference}
-              </Typography>
+            {formData.areaPreferences
+              .filter(preference => preference !== 'noChoose')
+              .map((preference, index) => (
+                <Typography key={index} variant="body2" gutterBottom>
+                  <strong>Priority {index + 1}:</strong> {getAreaType(preference)}
+                </Typography>
             ))}
           </Box>
           <Typography variant="body1" gutterBottom>
@@ -38,7 +76,7 @@ const Confirmation = ({ formData, handleNext }) => {
             ))}
           </Box>
         </Box>
-        <Button variant="contained" color="primary" onClick={handleNext} sx={{ mt: 2 }}>
+        <Button variant="contained" color="primary" onClick={handleSubmit} sx={{ mt: 2 }}>
           Next
         </Button>
       </CardContent>

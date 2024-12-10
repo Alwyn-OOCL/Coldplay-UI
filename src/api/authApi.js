@@ -1,4 +1,4 @@
-import baseApi from './baseApi';
+import baseApi from "./baseApi";
 
 export const login = async (credential, password) => {
     try {
@@ -11,11 +11,11 @@ export const login = async (credential, password) => {
 };
 
 export const register = async (userData) => {
-    try {
-        const response = await baseApi.post('/register', userData);
-        return response.data;
-    } catch (error) {
-        console.error('Register error:', error);
-        throw error;
-    }
+  try {
+    const response = await baseApi.post("/register", userData);
+    return response.data;
+  } catch (error) {
+    console.error("Register error:", error);
+    throw error;
+  }
 };
