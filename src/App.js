@@ -8,6 +8,7 @@ import LoginPage from "./components/pages/auth/LoginPage";
 import SignUpPage from "./components/pages/auth/SignUpPage";
 import NotFoundPage from "./components/pages/NotFoundPage";
 import ServerErrorPage from "./components/pages/ServerErrorPage";
+import ConcertDetail from "./components/ConcertDetail/ConcertDetail";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                         <Route path="/login" element={<LoginPage/>}/>
                         <Route path="/signup" element={<SignUpPage/>}/>
                         <Route path="/server-error" element={<ServerErrorPage />} />
+                        <Route path="/concert/:id" element={<ConcertDetail />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </div>
