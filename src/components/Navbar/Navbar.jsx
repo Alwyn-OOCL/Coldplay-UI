@@ -22,11 +22,12 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container navbar-container">
         <div className="navbar-logo" onClick={handleLogoClick}>Coldplay World Tour</div>
-        <div className="navbar-links">
-          <a href="/" className="nav-link">Homepage</a>
-          <a href="/concerts" className="nav-link">Concerts</a>
+        <div className='navbar-links'>
+          <a href='/' className='nav-link'>Homepage</a>
+          <a href='/concerts' className='nav-link'>Concerts</a>
+          <a href='/newsections' className='nav-link'>New Sections</a>
         </div>
-        <div className="navbar-auth">
+        <div className='navbar-auth'>
           <button className="button button-secondary" onClick={handleLogin}>Log In</button>
           <button className="button button-primary" onClick={handleSignup}>Sign Up</button>
         </div>
