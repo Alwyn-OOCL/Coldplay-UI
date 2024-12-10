@@ -2,7 +2,7 @@
   --primary-color: #E32636;
   --background-dark: #1a1a1a;
   --text-light: #ffffff;
-  --text-gray: #efdede;
+  --text-gray: rgba(250, 245, 245, 0.89);
 }
 
 body {

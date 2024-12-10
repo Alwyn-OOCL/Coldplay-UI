@@ -1,22 +1,28 @@
 import React from 'react';
 import './HomePoster.css';
+import {useNavigate} from 'react-router-dom';
 
-export default function HomePoster() {
+export default function HomePoster () {
+  const navigate = useNavigate();
+  const handleGetTicket = () => {
+    navigate('/concerts'); // 跳转到首页
+  };
+
   return (
-    <section className="homeposter">
-      <div className="container homeposter-container">
-        <div className="homeposter-content">
-          <h1 className="homeposter-title">
-            Join us for an unforgettable journey as Coldplay takes the stage across the globe. Experience the magic and music live in concert as we travel from city to city, bringing you the hits you love and
-            new songs to discover.
+    <section className='homeposter'>
+      <div className='container homeposter-container'>
+        <div className='homeposter-content'>
+          <h1 className='homeposter-title'>
+            Experience Cold play's World Tour & enjoy the music live!
           </h1>
-          <p className="homeposter-subtitle"></p>
+          <p className='homeposter-subtitle'>Join us for an unforgettable journey as Coldplay takes the stage across the globe.</p>
+          <button className='button button-primary' onClick={handleGetTicket}>Get Tickets</button>
         </div>
-        <div className="homeposter-image">
+        <div className='homeposter-image'>
           <img
             src={require('../../../assets/images/homeposter.png')}
-            alt="Vibrant concert atmosphere"
-            className="concert-image"
+            alt='Vibrant concert atmosphere'
+            className='concert-image'
           />
         </div>
       </div>

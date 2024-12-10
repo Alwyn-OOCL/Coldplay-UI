@@ -4,9 +4,9 @@
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 48px;
+  display: flex;
+  justify-content: space-around; /* Adjusted from space-between to space-around */
+  flex-wrap: wrap;
 }
 
 .footer-brand h3 {
@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  font-size: 18px;
 }
 
 .footer-links h4 {
