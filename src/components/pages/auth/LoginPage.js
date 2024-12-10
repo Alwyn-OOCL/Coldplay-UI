@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import './Auth.css';
 import {useAuth} from "../../../contexts/AuthContext";
@@ -8,22 +8,29 @@ import {login} from "../../../api/authApi";
 export default function LoginPage() {
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
+    const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
-    const { setToken } = useAuth();
+    const [error, setError] = useState('');
+    const [rememberMe, setRememberMe] = useState(false)
+    const {setToken} = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            login(email, password).then((response) => {
-                setToken(response.data);
-            }).finally(() => {
+        login(credential, password).then((response) => {
+            if (response.success) {
+                setToken({token: response.data, isRemember: rememberMe});
                 navigate('/');
-            });
-        } catch (error) {
-            // Handle error (show error message)
-        }
+            } else {
+                setError(response.errorMsg);
+            }
+        });
+
     };
+
+    const handleChange = (e) => {
+        const {checked} = e.target;
+        setRememberMe(checked);
+    }
 
     return (
         <div className="auth-page">
@@ -33,10 +40,10 @@ export default function LoginPage() {
                     <form onSubmit={handleSubmit} className="auth-form">
                         <div className="form-group">
                             <input
-                                type="email"
-                                placeholder="Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                type="text"
+                                placeholder="Email / Username"
+                                value={credential}
+                                onChange={(e) => setCredential(e.target.value)}
                                 required
                             />
                         </div>
@@ -48,20 +55,28 @@ export default function LoginPage() {
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
+                            {error && <p className="error-message">{error}</p>}
                         </div>
-                        <Link to="/forgot-password" className="forgot-password">
-                            Forgot Password?
-                        </Link>
                         <button type="submit" className="auth-button login-button">
                             Log In
                         </button>
+                        <div className="form-group checkbox">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="rememberMe"
+                                    onChange={handleChange}
+                                />
+                                <span>Remember Me</span>
+                            </label>
+                        </div>
                     </form>
                     <p className="auth-switch">
                         Don't have an account? <Link to="/signup">Sign up</Link>
                     </p>
                 </div>
             </main>
-            <Footer />
+            <Footer/>
         </div>
     );
 }

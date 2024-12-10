@@ -13,8 +13,18 @@ export function AuthProvider({ children }) {
   }, []);
 
   const setTokenAfterLogin = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+    const token = userData.token;
+    setUser(token);
+    // 设置为rememberMe时，存储到localStorage（不过期）
+    if (userData.isRemember) {
+      localStorage.setItem('user', JSON.stringify(token));
+      return;
+    }
+    // 设置一小时的有效期
+    const expire = 1000 * 60 * 60;
+    setTimeout(() => {
+      localStorage.setItem('user', JSON.stringify(token))
+    }, expire)
   };
 
   const clearTokenAfterLogout = () => {

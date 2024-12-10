@@ -6,11 +6,17 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
-          <div className="footer-brand">
+          <div className='footer-links'>
             <h3>Coldplay World Tour</h3>
-            <div className="social-links">
-              <a href="https://www.coldplay.com" className="social-link">coldplay</a>
-            </div>
+            <a href='https://www.coldplay.com/' className='social-link'>Coldplay</a>
+          </div>
+          <div className='footer-links'>
+            <h3>Social</h3>
+            <a href='https://www.instagram.com/coldplay/' className='social-link'>Instagram</a>
+          </div>
+          <div className="footer-links">
+            <h3>FAQs</h3>
+            <a href="#" className='social-link'>Support</a>
           </div>
         </div>
       </div>
