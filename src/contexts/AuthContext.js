@@ -21,10 +21,8 @@ export function AuthProvider({ children }) {
       return;
     }
     // 设置一小时的有效期
-    const expire = 1000 * 60 * 60;
-    setTimeout(() => {
-      localStorage.setItem('user', JSON.stringify(token))
-    }, expire)
+    const expire = Date.now() + 1000 * 60 * 60; // 1 hour from now
+    localStorage.setItem('user', JSON.stringify(token), { expires: expire });
   };
 
   const clearTokenAfterLogout = () => {

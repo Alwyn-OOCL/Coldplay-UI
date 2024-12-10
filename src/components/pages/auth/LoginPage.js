@@ -19,7 +19,8 @@ export default function LoginPage() {
         login(credential, password).then((response) => {
             if (response.success) {
                 setToken({token: response.data, isRemember: rememberMe});
-                navigate('/');
+                // 跳到上一个页面
+                navigate(-1);
             } else {
                 setError(response.errorMsg);
             }
@@ -57,12 +58,12 @@ export default function LoginPage() {
                             />
                             {error && <p className="error-message">{error}</p>}
                         </div>
-                        <button type="submit" className="auth-button login-button">
+                        <button type="submit" className="auth-submit login">
                             Log In
                         </button>
                         <div className="form-group checkbox">
                             <label>
-                                <input
+                            <input
                                     type="checkbox"
                                     name="rememberMe"
                                     onChange={handleChange}
@@ -76,7 +77,6 @@ export default function LoginPage() {
                     </p>
                 </div>
             </main>
-            <Footer/>
         </div>
     );
 }
