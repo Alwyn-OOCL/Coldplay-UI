@@ -14,7 +14,7 @@ export default function HomePoster() {
         </div>
         <div className="homeposter-image">
           <img
-            src={require('../../assets/images/homeposter.png')}
+            src={require('../../../assets/images/homeposter.png')}
             alt="Vibrant concert atmosphere"
             className="concert-image"
           />
