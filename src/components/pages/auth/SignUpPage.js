@@ -45,68 +45,72 @@ export default function SignUpPage() {
     };
 
     return (
-        <div className="auth-card">
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        required
-                    />
-                    {error && <p className="error-message">{error}</p>}
-                    {duplicateError && <p className="error-message">{duplicateError}</p>}
-                </div>
-                <div className="form-group checkbox">
-                    <label>
-                        <input
-                            type="checkbox"
-                            name="agreeToTerms"
-                            checked={formData.agreeToTerms}
-                            onChange={handleChange}
-                            required
-                        />
-                        <span>
+        <div className="auth-page">
+            <main className="auth-container">
+                <div className="auth-card">
+                    <h2>Sign Up</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                name="confirmPassword"
+                                placeholder="Confirm Password"
+                                required
+                            />
+                            {error && <p className="error-message">{error}</p>}
+                            {duplicateError && <p className="error-message">{duplicateError}</p>}
+                        </div>
+                        <div className="form-group checkbox">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="agreeToTerms"
+                                    checked={formData.agreeToTerms}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <span>
               I agree to the <Link to="/terms" className="terms-link">Terms & Conditions</Link>
             </span>
-                    </label>
+                            </label>
+                        </div>
+                        <button type="submit" className="auth-submit signup">
+                            Sign Up
+                        </button>
+                    </form>
                 </div>
-                <button type="submit" className="auth-submit signup">
-                    Sign Up
-                </button>
-            </form>
+            </main>
         </div>
-    );
+);
 }
 
