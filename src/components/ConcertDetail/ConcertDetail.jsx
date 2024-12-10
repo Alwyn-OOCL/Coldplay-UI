@@ -10,6 +10,9 @@ export default function ConcertDetail() {
   const navigate = useNavigate();
   const [concert, setConcert] = useState(null);
 
+  const saleTime = new Date(concert?.concertSaleTime);
+  const buttonLabel = new Date() < saleTime ? "Book Now!" : "Buy Now!";
+
   const handlePurchaseTicket = () => {
     const storedUser = localStorage.getItem("user");
 
@@ -122,7 +125,7 @@ export default function ConcertDetail() {
               className="button button-primary purchase-button"
               onClick={handlePurchaseTicket}
             >
-              Purchase Tickets
+              {buttonLabel}
             </button>
             <p className="terms">
               By purchasing tickets you agree to our terms and conditions
