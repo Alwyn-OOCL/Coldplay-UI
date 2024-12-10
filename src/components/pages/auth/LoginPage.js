@@ -11,14 +11,14 @@ export default function LoginPage() {
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [rememberMe, setRememberMe] = useState(false)
     const {setToken} = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         login(credential, password).then((response) => {
-            console.log(response);
             if (response.success) {
-                setToken(response.data);
+                setToken({token: response.data, isRemember: rememberMe});
                 navigate('/');
             } else {
                 setError(response.errorMsg);
@@ -26,6 +26,11 @@ export default function LoginPage() {
         });
 
     };
+
+    const handleChange = (e) => {
+        const {checked} = e.target;
+        setRememberMe(checked);
+    }
 
     return (
         <div className="auth-page">
@@ -55,6 +60,16 @@ export default function LoginPage() {
                         <button type="submit" className="auth-button login-button">
                             Log In
                         </button>
+                        <div className="form-group checkbox">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="rememberMe"
+                                    onChange={handleChange}
+                                />
+                                <span>Remember Me</span>
+                            </label>
+                        </div>
                     </form>
                     <p className="auth-switch">
                         Don't have an account? <Link to="/signup">Sign up</Link>

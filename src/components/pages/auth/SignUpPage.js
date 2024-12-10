@@ -17,6 +17,7 @@ export default function SignUpPage() {
     });
 
     const [error, setError] = useState('');
+    const [duplicateError, setDuplicateError] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,9 +27,12 @@ export default function SignUpPage() {
         }
         // Handle signup logic here
         register(formData).then((response) => {
-            setToken(response.data);
-        }).finally(() => {
-            navigate('/login');
+            if (response.success) {
+                setToken({token: response.data});
+                navigate('/');
+            } else {
+                setDuplicateError(response.errorMsg);
+            }
         });
     };
 
@@ -82,6 +86,7 @@ export default function SignUpPage() {
                         required
                     />
                     {error && <p className="error-message">{error}</p>}
+                    {duplicateError && <p className="error-message">{duplicateError}</p>}
                 </div>
                 <div className="form-group checkbox">
                     <label>
