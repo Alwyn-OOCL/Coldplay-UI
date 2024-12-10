@@ -12,6 +12,7 @@ export default function Footer() {
           </div>
           <div className='footer-links'>
             <h3>Social</h3>
+            {/*change url todo victor*/}
             <a href='https://www.instagram.com/coldplay/' className='social-link'>Instagram</a>
           </div>
           <div className="footer-links">
