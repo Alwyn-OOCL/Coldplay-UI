@@ -37,17 +37,20 @@ export default function Navbar () {
   return (
     <nav className='navbar'>
       <div className='container navbar-container'>
-        <div className='navbar-logo' onClick={handleLogoClick}>Coldplay World Tour</div>
+        <div className='navbar-logo' onClick={handleLogoClick}>
+          Coldplay World Tour <span className='logo-break'>Ticketing System</span>
+        </div>
         <div className='navbar-links'>
           <a href='/' className='nav-link'>Homepage</a>
           <a href='/concerts' className='nav-link'>Concerts</a>
-          <a href='/newsections' className='nav-link'>New Sections</a>
         </div>
         <div className='navbar-auth'>
           {user ? (
             <div className='user-info'>
-              <div>{user.level}</div>
-              <span>{user.name}</span>
+              <div className='user-info'>
+                <div className='user-level'>{user.level}</div>
+                <div className='user-name'>{user.name}</div>
+              </div>
             </div>
           ) : (
             <>

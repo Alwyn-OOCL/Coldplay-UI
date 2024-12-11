@@ -2,11 +2,13 @@
   padding: 80px 0;
 }
 
+/* HomePoster.css */
 .homeposter-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  margin: 20px 0;
 }
 
 .homeposter-content {
@@ -23,10 +25,6 @@
   font-size: 22px;
   color: var(--text-gray);
   margin-bottom: 32px;
-}
-
-.homeposter-image {
-  position: relative;
 }
 
 .concert-image {
