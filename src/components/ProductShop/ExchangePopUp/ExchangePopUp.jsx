@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExchangePopUp.css";
 
-export default function ExchangePopUp({ selectedProducts, onClose }) {
+export default function ExchangePopUp({ selectedProducts, onClose, updateSelectedProducts }) {
   const [products, setProducts] = useState(selectedProducts);
 
   // Function to group products by their ID and calculate the quantity
@@ -22,6 +22,7 @@ export default function ExchangePopUp({ selectedProducts, onClose }) {
   const handleIncrease = (productId) => {
     const updatedProducts = [...products, products.find(product => product.productId === productId)];
     setProducts(updatedProducts);
+    updateSelectedProducts(updatedProducts);
   };
 
   const handleDecrease = (productId) => {
@@ -30,6 +31,7 @@ export default function ExchangePopUp({ selectedProducts, onClose }) {
       const updatedProducts = [...products];
       updatedProducts.splice(productIndex, 1);
       setProducts(updatedProducts);
+      updateSelectedProducts(updatedProducts);
     }
   };
 
@@ -55,8 +57,8 @@ export default function ExchangePopUp({ selectedProducts, onClose }) {
                     {product.points * product.quantity} points total
                   </span>
                   <div className="exchange-item-btn-toggle-group">
-                  <button className="exchange-item-toggle-btn" onClick={() => handleDecrease(product.productId)}>-</button>
-                  <button className="exchange-item-toggle-btn" onClick={() => handleIncrease(product.productId)}>+</button>
+                    <button className="exchange-item-toggle-btn" onClick={() => handleDecrease(product.productId)}>-</button>
+                    <button className="exchange-item-toggle-btn" onClick={() => handleIncrease(product.productId)}>+</button>
                   </div>
                 </div>
               ))}

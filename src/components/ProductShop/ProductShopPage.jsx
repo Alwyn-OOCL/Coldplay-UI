@@ -122,7 +122,13 @@ export default function ProductShopPage() {
           currentPage={currentPage}
         />
       </main>
-      {isPopupOpen && <ExchangePopUp onClose={handleClosePopup} selectedProducts={selectedProducts} />}
+      {isPopupOpen && (
+        <ExchangePopUp
+          onClose={handleClosePopup}
+          selectedProducts={selectedProducts}
+          updateSelectedProducts={setSelectedProducts}
+        />
+      )}
     </div>
   );
 }
