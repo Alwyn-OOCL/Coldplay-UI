@@ -143,9 +143,9 @@ const BookingForm = ({ formData, handleChange, handleNext, concert }) => {
             errors={errors}
             setErrors={setErrors}
           />
-          <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!isSaleTimeReached}>
+          <button className="button button-primary" onClick={handleSubmit} disabled={!isSaleTimeReached}>
             {isSaleTimeReached ? 'Book Now' : 'Sales Not Started'}
-          </Button>
+          </button>
           {!isSaleTimeReached && (
             <Typography variant="body2" color="error" sx={{ mt: 2 }}>
               Sales start in: {countdown}

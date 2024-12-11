@@ -37,12 +37,12 @@ const Result = ({ paymentResult }) => {
             marginTop: 2,
           }}
         >
-          <Button variant="contained" color="primary" onClick={handleHomeRedirect}>
+          <button className="button button-primary" onClick={handleHomeRedirect}>
             Home
-          </Button>
-          <Button variant="contained" color="secondary" onClick={handleMyBookingRedirect}>
+          </button>
+          <button className="button button-secondary" onClick={handleMyBookingRedirect}>
             View my booking
-          </Button>
+          </button>
         </Box>
       </CardContent>
     </Card>

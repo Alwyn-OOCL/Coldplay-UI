@@ -55,7 +55,8 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     if (validateForm()) {
       try {
         const paymentData = {
@@ -138,9 +139,12 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
           {errors.payment && (
             <Typography color="error">{errors.payment}</Typography>
           )}
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
+          {/* <Button variant="contained" color="primary" onClick={handleSubmit}> */}
+          <button className="button button-primary" onClick={handleSubmit}>
+
             Pay Now
-          </Button>
+          </button>
+          {/* </Button> */}
         </Box>
       </CardContent>
     </Card>

@@ -11,7 +11,7 @@ import NotFoundPage from "./components/pages/NotFoundPage";
 import ServerErrorPage from "./components/pages/ServerErrorPage";
 import { AuthProvider } from "./contexts/AuthContext";
 import darkTheme from "./theme";
-import ConcertListPage from "./components/pages/concertListPage/ConcertListPage";
+import ConcertListPage from "../src/pages/ConcertListPage";
 
 function App() {
   return (

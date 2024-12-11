@@ -76,9 +76,9 @@ const Confirmation = ({ formData, handleNext, concert }) => {
             ))}
           </Box>
         </Box>
-        <Button variant="contained" color="primary" onClick={handleSubmit} sx={{ mt: 2 }}>
+        <button className="button button-primary" onClick={handleSubmit} sx={{ mt: 2 }}>
           Next
-        </Button>
+        </button>
       </CardContent>
     </Card>
   );

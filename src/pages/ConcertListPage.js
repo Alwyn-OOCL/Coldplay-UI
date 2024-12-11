@@ -1,6 +1,5 @@
 // src/pages/ConcertListPage.js
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import ConcertList from '../components/ConcertList/ConcertList';
 import DateRangeSearch from '../components/DateRangeSearch/DateRangeSearch';
@@ -84,7 +83,6 @@ export default function ConcertListPage() {
 
     return (
         <div className="concert-list-page">
-            {/*<Navbar />*/}
             <main className="container">
                 <h1>Upcoming Concerts</h1>
                 {/* FilterOptions updates pendingFilters */}
