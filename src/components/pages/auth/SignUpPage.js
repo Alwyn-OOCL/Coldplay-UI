@@ -27,7 +27,7 @@ export default function SignUpPage() {
         }
         register(formData).then((response) => {
             if (response.success) {
-                setToken({token: response.data});
+                setToken({token: response.data.token, id: response.data.id});
                 // 跳到上一个页面
                 navigate(-1);
             } else {

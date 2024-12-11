@@ -17,7 +17,7 @@ export default function LoginPage() {
         e.preventDefault();
         login(credential, password).then((response) => {
             if (response.success) {
-                setToken({token: response.data, isRemember: rememberMe});
+                setToken({token: response.data.token, id: response.data.id, isRemember: rememberMe});
                 // 跳到上一个页面
                 navigate(-1);
             } else {

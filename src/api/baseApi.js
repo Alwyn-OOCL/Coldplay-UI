@@ -8,7 +8,7 @@ const baseApi = axios.create({
 baseApi.interceptors.request.use(
   (config) => {
     // You can add any custom logic before the request is sent
-    const token = localStorage.getItem("user");
+    const token = localStorage.getItem("userToken");
     if (token) {
       const cleanedToken = token.replace(/^"|"$/g, ""); // Remove surrounding quotes
       config.headers["Authorization"] = `Bearer ${cleanedToken}`;
