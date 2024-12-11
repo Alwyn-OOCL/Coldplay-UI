@@ -14,7 +14,6 @@ export function AuthProvider ({children}) {
   useEffect(() => {
     const storedUserToken = localStorage.getItem('userToken');
     const storedUserId = localStorage.getItem('userId');
-    console.log('storedUserToken', storedUserToken);
     if (storedUserToken) {
       setToken(JSON.parse(storedUserToken));
     }
@@ -28,8 +27,6 @@ export function AuthProvider ({children}) {
     const id = userData.id;
     setToken(token);
     setUserId(id);
-    console.log('id', id)
-    console.log('json', JSON.stringify(id))
     // 设置为rememberMe时，存储到localStorage（不过期）
     if (userData.isRemember) {
       localStorage.setItem('userToken', JSON.stringify(token));
