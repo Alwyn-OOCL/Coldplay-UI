@@ -7,6 +7,7 @@ import './Navbar.css';
 import '../../assets/styles/global.css';
 import baseApi from '../../api/baseApi';
 import {useAuth} from "../../contexts/AuthContext";
+import logo from '../../assets/images/logo.svg';
 
 export default function Navbar () {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function Navbar () {
   return (
     <nav className='navbar'>
       <div className='container navbar-container'>
+        <img src={logo} alt='Logo' onClick={handleLogoClick} style={{ height: 'auto', width: '70px' }}/>
         <div className='navbar-logo' onClick={handleLogoClick}>
           Coldplay World Tour <span className='logo-break'>Ticketing System</span>
         </div>
@@ -61,18 +63,18 @@ export default function Navbar () {
         </div>
         <div className='navbar-auth'>
           {user ? (
-            <div className='user-info'>
-              <div>
-                <div className='user-level'>{user.level}</div>
-                <div className='user-name'>{user.name}</div>
+              <div className='user-info'>
+                <div>
+                  <div className='user-level'>{user.level}</div>
+                  <div className='user-name'>{user.name}</div>
+                </div>
+                <button className='logout-button' onClick={handleLogout}>Logout</button>
               </div>
-              <button className='logout-button' onClick={handleLogout}>Logout</button>
-            </div>
           ) : (
-            <>
-              <button className='button button-secondary' onClick={handleLogin}>Log In</button>
-              <button className='button button-primary' onClick={handleSignup}>Sign Up</button>
-            </>
+              <>
+                <button className='button button-secondary' onClick={handleLogin}>Log In</button>
+                <button className='button button-primary' onClick={handleSignup}>Sign Up</button>
+              </>
           )}
         </div>
       </div>
