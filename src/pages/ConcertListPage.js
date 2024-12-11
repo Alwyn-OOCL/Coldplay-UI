@@ -84,7 +84,7 @@ export default function ConcertListPage() {
 
     return (
         <div className="concert-list-page">
-            <Navbar />
+            {/*<Navbar />*/}
             <main className="container">
                 <h1>Upcoming Concerts</h1>
                 {/* FilterOptions updates pendingFilters */}
