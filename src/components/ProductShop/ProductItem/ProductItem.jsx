@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductItem.css';
 
 export default function ProductItem({ product, handleAddToCart }) {
+  const [quantity, setQuantity] = useState(0);
+
+  const handleAddClick = () => {
+    setQuantity(1);
+    handleAddToCart(product);
+  };
+
+  const handleIncreaseQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
+
+  const handleDecreaseQuantity = () => {
+    setQuantity(prevQuantity => Math.max(prevQuantity - 1, 0));
+  };
+
   return (
     <div className="product-item">
       <Link to={`/product/${product.productId}`} className="product-link">
@@ -14,9 +29,17 @@ export default function ProductItem({ product, handleAddToCart }) {
           <p><strong>Description:</strong> {product.description}</p>
         </div>
       </Link>
-      <button className="add-to-cart-button" onClick={() => handleAddToCart(product)}>
-        Add to Cart
-      </button>
+      {quantity === 0 ? (
+        <button className="add-to-cart-button" onClick={handleAddClick}>
+          Add to Cart
+        </button>
+      ) : (
+        <div className="quantity-controls">
+          <button className="decrease-button" onClick={handleDecreaseQuantity}>-</button>
+          <span className="quantity">{quantity}</span>
+          <button className="increase-button" onClick={handleIncreaseQuantity}>+</button>
+        </div>
+      )}
     </div>
   );
 }
