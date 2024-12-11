@@ -1,6 +1,7 @@
 // src/services/concertService.js
 import axios from 'axios';
 
+// todo use baseApi instead of axiosInstance Valen
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:8080/api/',
     headers: {
