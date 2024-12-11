@@ -13,7 +13,7 @@ export default function ConcertDetail() {
   const buttonLabel = new Date() < saleTime ? "Book Now!" : "Buy Now!";
 
   const handlePurchaseTicket = () => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("userToken");
 
     if (storedUser) {
       navigate(`/booking/${concert_id}`);

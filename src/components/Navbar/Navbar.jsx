@@ -5,22 +5,25 @@ import React, {
 import {useNavigate} from 'react-router-dom';
 import './Navbar.css';
 import '../../assets/styles/global.css';
-import baseApi from '../../api/baseApi'; // Assume this is the API call to get user data
+import baseApi from '../../api/baseApi';
+import {useAuth} from "../../contexts/AuthContext";
 
 export default function Navbar () {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
+  const { userId } = useAuth();
+
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      baseApi.get(`/user/1`)
-        .then(response => {
-          setUser(response.data.data);
-        });
+    if (userId) {
+      baseApi.get(`/user/${userId}`)
+      .then(response => {
+        setUser(response.data.data);
+      })
+      .finally(() => {
+      });
     }
-    console.log('User:', user);
-  }, []);
+  }, [userId]);
 
   const handleLogin = () => {
     navigate('/login');
@@ -47,10 +50,11 @@ export default function Navbar () {
         <div className='navbar-auth'>
           {user ? (
             <div className='user-info'>
-              <div className='user-info'>
+              <div>
                 <div className='user-level'>{user.level}</div>
                 <div className='user-name'>{user.name}</div>
               </div>
+              <button className='logout-button'>Logout</button>
             </div>
           ) : (
             <>

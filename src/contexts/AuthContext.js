@@ -1,47 +1,62 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {createContext, useContext, useState, useEffect} from 'react';
+import LoginPage from "../components/pages/auth/LoginPage";
 
 const AuthContext = createContext(null);
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+export function AuthProvider({children}) {
+    const [token, setToken] = useState(null);
+    const [userId, setUserId] = useState(null);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+    useEffect(() => {
+        const storedUserToken = localStorage.getItem('userToken');
+        const storedUserId = localStorage.getItem('userId');
+        console.log('storedUserToken', storedUserToken);
+        if (storedUserToken) {
+            setToken(JSON.parse(storedUserToken));
+        }
+        if (storedUserId) {
+            setUserId(JSON.parse(storedUserId));
+        }
+    }, []);
 
-  const setTokenAfterLogin = (userData) => {
-    const token = userData.token;
-    setUser(token);
-    // 设置为rememberMe时，存储到localStorage（不过期）
-    if (userData.isRemember) {
-      localStorage.setItem('user', JSON.stringify(token));
-      return;
-    }
-    // 设置一小时的有效期
-    const expire = Date.now() + 1000 * 60 * 60; // 1 hour from now
-    localStorage.setItem('user', JSON.stringify(token), { expires: expire });
-  };
+    const setTokenAfterLogin = (userData) => {
+        const token = userData.token;
+        const id = userData.id;
+        setToken(token);
+        setUserId(id);
+        console.log('id', id)
+        console.log('json', JSON.stringify(id))
+        // 设置为rememberMe时，存储到localStorage（不过期）
+        if (userData.isRemember) {
+            localStorage.setItem('userToken', JSON.stringify(token));
+            localStorage.setItem('userId', JSON.stringify(id));
+            return;
+        }
+        // 设置一小时的有效期
+        const expire = Date.now() + 1000 * 60 * 60; // 1 hour from now
+        localStorage.setItem('userToken', JSON.stringify(token), {expires: expire});
+        localStorage.setItem('userId', JSON.stringify(id), {expires: expire});
+    };
 
-  const clearTokenAfterLogout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-  };
+    const clearTokenAfterLogout = () => {
+        setToken(null);
+        setUserId(null);
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('userId');
+    };
 
-  return (
-      <AuthContext.Provider value={{ user, setToken: setTokenAfterLogin, clearToken: clearTokenAfterLogout }}>
-        {children}
-      </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{user: token, userId, setToken: setTokenAfterLogin, clearToken: clearTokenAfterLogout}}>
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
 export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === null) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+    const context = useContext(AuthContext);
+    if (context === null) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
 }
 
