@@ -1,6 +1,11 @@
 import React from 'react';
-import { Card, CardContent, Typography, Button, Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import {
+  Box,
+  Card,
+  CardContent,
+  Typography
+} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 
 const Result = ({ paymentResult }) => {
   const navigate = useNavigate();

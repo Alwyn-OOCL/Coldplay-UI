@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useEffect,
+  useState
+} from "react";
 import {
+  Box,
   Card,
   CardContent,
-  Typography,
-  Box,
-  Button,
-  MenuItem,
-  Select,
   FormControl,
   InputLabel,
+  MenuItem,
+  Select,
+  Typography,
 } from "@mui/material";
 import {
   getPaymentChannels,
@@ -16,7 +18,12 @@ import {
 } from "../../../api/pages/bookingPage/bookingApi";
 import CreditCardForm from "./CreditCardForm";
 
-const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
+const Payment = ({
+                   formData,
+                   handleChange,
+                   handleNext,
+                   bookingData
+                 }) => {
   const [errors, setErrors] = useState({});
   const [paymentChannels, setPaymentChannels] = useState([]);
 
@@ -27,15 +34,19 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
         const channels = response.data.data;
         setPaymentChannels(channels);
         if (channels.length > 0 && !formData.channelId) {
-          handleChange("channelId")({ target: { value: channels[0].id } });
+          handleChange("channelId")({target: {value: channels[0].id}});
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.error("Error getting payment channels:", error);
       }
     };
 
     fetchPaymentChannels();
-  }, [formData.channelId, handleChange]);
+  }, [
+    formData.channelId,
+    handleChange
+  ]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -70,9 +81,10 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
         console.log("Payment Data:", paymentData);
         const response = await makePayment(bookingData.orderId, paymentData);
         handleNext(response.data);
-      } catch (error) {
+      }
+      catch (error) {
         console.error("Error making payment:", error);
-        setErrors({ payment: "Payment failed. Please try again." });
+        setErrors({payment: "Payment failed. Please try again."});
       }
     }
   };
@@ -80,7 +92,7 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
   const handleFieldChange = (field) => (event) => {
     handleChange(field)(event);
     setErrors((prevErrors) => {
-      const newErrors = { ...prevErrors };
+      const newErrors = {...prevErrors};
       delete newErrors[field];
       return newErrors;
     });
@@ -91,33 +103,37 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h5" component="div" gutterBottom>
+        <Typography variant='h5' component='div' gutterBottom>
           Payment
         </Typography>
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="body1" gutterBottom>
+        <Box sx={{mb: 2}}>
+          <Typography variant='body1' gutterBottom>
             <strong>Area Type:</strong> {bookingData.areaType}
           </Typography>
-          <Typography variant="body1" gutterBottom>
+          <Typography variant='body1' gutterBottom>
             <strong>Price:</strong> ${bookingData.price}
           </Typography>
-          <Typography variant="body1" gutterBottom>
+          <Typography variant='body1' gutterBottom>
             <strong>Amount:</strong> {bookingData.amount}
           </Typography>
-          <Typography variant="body1" gutterBottom>
+          <Typography variant='body1' gutterBottom>
             <strong>Total Price:</strong> ${totalPrice}
           </Typography>
         </Box>
         <Box
-          component="form"
-          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+          component='form'
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2
+          }}
         >
           <FormControl fullWidth error={!!errors.channelId}>
             <InputLabel>Payment Method</InputLabel>
             <Select
               value={formData.channelId || ""}
               onChange={handleFieldChange("channelId")}
-              label="Payment Method"
+              label='Payment Method'
             >
               {paymentChannels.map((channel) => (
                 <MenuItem key={channel.id} value={channel.id}>
@@ -126,7 +142,7 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
               ))}
             </Select>
             {errors.channelId && (
-              <Typography color="error">{errors.channelId}</Typography>
+              <Typography color='error'>{errors.channelId}</Typography>
             )}
           </FormControl>
           {formData.channelId && (
@@ -137,10 +153,10 @@ const Payment = ({ formData, handleChange, handleNext, bookingData }) => {
             />
           )}
           {errors.payment && (
-            <Typography color="error">{errors.payment}</Typography>
+            <Typography color='error'>{errors.payment}</Typography>
           )}
           {/* <Button variant="contained" color="primary" onClick={handleSubmit}> */}
-          <button className="button button-primary" onClick={handleSubmit}>
+          <button className='button button-primary' onClick={handleSubmit}>
 
             Pay Now
           </button>

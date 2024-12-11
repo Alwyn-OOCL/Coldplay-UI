@@ -1,9 +1,8 @@
 import React, {
-  useState,
-  useEffect
+  useEffect,
+  useState
 } from 'react';
 import baseApi from '../../../api/baseApi';
-import {Link} from 'react-router-dom';
 import NewSectionItem from './NewSectionItem';
 import './NewSectionGroup.css';
 
