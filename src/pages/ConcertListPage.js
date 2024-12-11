@@ -179,7 +179,6 @@ export default function ConcertListPage() {
                     currentPage={currentPage}
                 />
             </main>
-            <Footer />
         </div>
     );
 }
