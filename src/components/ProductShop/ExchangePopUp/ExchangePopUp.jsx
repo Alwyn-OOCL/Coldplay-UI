@@ -11,6 +11,8 @@ export default function ExchangePopUp({
 
   const navigate = useNavigate();
 
+  const userPoints = 100;
+
   // Function to group products by their ID and calculate the quantity
   const groupProducts = (products) => {
     const grouped = products.reduce((acc, product) => {
@@ -60,8 +62,6 @@ export default function ExchangePopUp({
     } else {
       navigate(`/login`);
     }
-    // Assuming you have a way to reset the quantity state in each ProductItem
-    // This could be done via a context or a callback function passed down to reset the state
   };
 
   return (
@@ -106,16 +106,29 @@ export default function ExchangePopUp({
                 <span>Total Points:</span>
                 <span>{totalPoints} points</span>
               </div>
+              <div className="exchange-product-total">
+                <span>Your points:</span>
+                <span>{userPoints}</span>
+              </div>
             </>
           ) : (
             <p>No products selected.</p>
           )}
         </div>
         <div className="exchange-popup-footer">
+          {totalPoints > userPoints && (
+            <div className="exchange-error-message">
+              You do not have enough points to complete this exchange.(Only {userPoints} points available)
+            </div>
+          )}
           <button className="exchange-popup-button" onClick={onClose}>
             Close
           </button>
-          <button className="exchange-popup-button" onClick={handleExchange}>
+          <button
+            className="exchange-popup-button"
+            onClick={handleExchange}
+            disabled={totalPoints > userPoints}
+          >
             Exchange
           </button>
         </div>

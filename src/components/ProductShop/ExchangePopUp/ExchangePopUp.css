@@ -135,3 +135,9 @@
   display: flex;
   gap: 12px
 }
+
+.exchange-error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}
