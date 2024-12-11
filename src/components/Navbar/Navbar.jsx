@@ -12,7 +12,7 @@ export default function Navbar () {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  const { userId } = useAuth();
+  const { userId,clearToken} = useAuth();
 
   useEffect(() => {
     if (userId) {
@@ -37,6 +37,17 @@ export default function Navbar () {
     navigate('/'); // Navigate to homepage
   };
 
+  const handleLogout = () => {
+    baseApi.post('/logout')
+      .then(() => {
+        clearToken();
+        setUser(null);
+      })
+      .catch(error => {
+        console.error('Error during logout:', error);
+      });
+  };
+
   return (
     <nav className='navbar'>
       <div className='container navbar-container'>
@@ -54,7 +65,7 @@ export default function Navbar () {
                 <div className='user-level'>{user.level}</div>
                 <div className='user-name'>{user.name}</div>
               </div>
-              <button className='logout-button'>Logout</button>
+              <button className='logout-button' onClick={handleLogout}>Logout</button>
             </div>
           ) : (
             <>
