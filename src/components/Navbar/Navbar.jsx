@@ -57,6 +57,7 @@ export default function Navbar () {
         <div className='navbar-links'>
           <a href='/' className='nav-link'>Homepage</a>
           <a href='/concerts' className='nav-link'>Concerts</a>
+          <a href='/shop' className='nav-link'>Shop</a>
         </div>
         <div className='navbar-auth'>
           {user ? (
