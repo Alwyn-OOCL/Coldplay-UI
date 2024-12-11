@@ -5,6 +5,7 @@ import Footer from '../components/Footer/Footer';
 import './BookingDetailPage.css';
 
 // Example data - replace with actual API call
+// todo remove mock data Edmond
 const mockOrderDetail = {
     success: true,
     data: {
