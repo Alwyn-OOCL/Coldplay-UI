@@ -3,10 +3,10 @@ import React, {
   useState
 } from 'react';
 import baseApi from '../../../api/baseApi';
-import NewSectionItem from './NewSectionItem';
-import './NewSectionGroup.css';
+import NewsSectionItem from './NewsSectionItem';
+import './NewsSectionGroup.css';
 
-export default function NewSectionGroup () {
+export default function NewsSectionGroup () {
   const [newsItems, setNewsItems] = useState([]);
 
   useEffect(() => {
@@ -24,10 +24,10 @@ export default function NewSectionGroup () {
     <section className='news-section'>
       <div className='container'>
         <div className='news-section-inner'>
-          <h2 className='section-title'>New Sections</h2>
+          <h2 className='section-title'>News Sections</h2>
           <div className='news-list'>
             {newsItems.map(item => (
-              <NewSectionItem key={item.id} newsection={item}/>
+              <NewsSectionItem key={item.id} newsection={item}/>
             ))}
           </div>
         </div>

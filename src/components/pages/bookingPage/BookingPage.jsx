@@ -65,7 +65,6 @@ const BookingPage = () => {
   useEffect(() => {
     // Simulate fetching data from backend
     concertDetail(concert_id).then((response) => {
-      console.log(response);
       if (response.success) {
         setConcert(response.data);
       }

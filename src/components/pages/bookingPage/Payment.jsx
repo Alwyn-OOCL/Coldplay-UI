@@ -78,7 +78,6 @@ const Payment = ({
           amount: bookingData.amount,
           totalPrice: bookingData.price * bookingData.amount,
         };
-        console.log("Payment Data:", paymentData);
         const response = await makePayment(bookingData.orderId, paymentData);
         handleNext(response.data);
       }

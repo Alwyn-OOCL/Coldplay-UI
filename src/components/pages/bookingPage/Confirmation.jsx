@@ -15,7 +15,6 @@ const Confirmation = ({ formData, handleNext, concert }) => {
         areaPreferences: formData.areaPreferences.filter(preference => preference !== 'noChoose'),
         audienceDetails: formData.audienceDetails,
       });
-      console.log(response.data);
       if (response.data.success) {
         handleNext(response.data.data);
       } else {

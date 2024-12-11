@@ -11,19 +11,13 @@ export default function DateRangeSearch({ onRangeChange, initialRange, onApplyFi
         setEndDate(initialRange.endDate);
     }, [initialRange]);
 
-    const handleDateChange = () => {
-        // Update pending date range in parent
-        onRangeChange({ startDate, endDate });
-    };
-
     useEffect(() => {
-        handleDateChange();
+        onRangeChange({ startDate, endDate });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [startDate, endDate]);
 
     const handleApplyFilters = (e) => {
         e.preventDefault();
-        // Now actually apply filters and date range in parent
         onApplyFilters();
     };
 
@@ -41,7 +35,6 @@ export default function DateRangeSearch({ onRangeChange, initialRange, onApplyFi
                 onChange={(e) => setEndDate(e.target.value)}
                 placeholder="End Date"
             />
-            {/* Apply Filters button triggers the actual filtering */}
             <button type="submit">Apply Filters</button>
         </form>
     );
