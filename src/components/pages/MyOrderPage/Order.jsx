@@ -1,9 +1,22 @@
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import React from "react";
-import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import "./Order.css";
 
 const Order = ({ order }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/orders/${order.orderId}`);
+  };
+
   return (
-    <Card key={order.orderId} sx={{ display: "flex", marginBottom: 2 }}>
+    <Card
+      className="order-card"
+      key={order.orderId}
+      sx={{ display: "flex", marginBottom: 2 }}
+      onClick={handleCardClick}
+    >
       <CardMedia
         component="img"
         sx={{ width: 151 }}
@@ -22,7 +35,7 @@ const Order = ({ order }) => {
             {order.country}, {order.city}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="div">
-            Area: {order.areaType}
+            Area: {order.area_type}
           </Typography>
         </CardContent>
       </Box>
