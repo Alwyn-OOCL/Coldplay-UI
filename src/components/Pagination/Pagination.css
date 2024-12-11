@@ -1,0 +1,32 @@
+.pagination {
+  margin-top: 24px;
+}
+
+.pagination ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 4px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination li.active button {
+  background-color: var(--primary-color);
+}
+
+.pagination button:hover {
+  opacity: 0.9;
+}
+

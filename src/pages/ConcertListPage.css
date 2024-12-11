@@ -1,0 +1,29 @@
+.concert-list-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.concert-list-page main {
+    flex: 1;
+    padding: 40px 0;
+}
+
+.concert-list-page h1 {
+    margin-bottom: 24px;
+}
+
+.sort-button {
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sort-button:hover {
+    opacity: 0.9;
+}
+

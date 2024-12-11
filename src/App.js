@@ -11,6 +11,7 @@ import NotFoundPage from "./components/pages/NotFoundPage";
 import ServerErrorPage from "./components/pages/ServerErrorPage";
 import { AuthProvider } from "./contexts/AuthContext";
 import darkTheme from "./theme";
+import ConcertListPage from "./components/pages/concertListPage/ConcertListPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <div className="main">
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/concerts" element={<ConcertListPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/server-error" element={<ServerErrorPage />} />
