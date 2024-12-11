@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductItem.css';
 
-export default function ProductItem({ product, handleAddToCart }) {
+export default function ProductItem({ product, handleAddToCart, handleRemoveFromCart }) {
   const [quantity, setQuantity] = useState(0);
 
   const handleAddClick = () => {
     setQuantity(1);
-    handleAddToCart(product);
+    handleAddToCart(product, 1);
   };
 
   const handleIncreaseQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    handleAddToCart(product, newQuantity);
   };
 
   const handleDecreaseQuantity = () => {
-    setQuantity(prevQuantity => Math.max(prevQuantity - 1, 0));
+    const newQuantity = Math.max(quantity - 1, 0);
+    setQuantity(newQuantity);
+    handleRemoveFromCart(product);
   };
 
   return (
@@ -24,7 +28,7 @@ export default function ProductItem({ product, handleAddToCart }) {
         <img src={product.productImage} alt={product.productName} className="product-image" />
         <div className="product-details">
           <h2>{product.productName}</h2>
-          <p><strong>Price:</strong> ${product.price}</p>
+          <p><strong>Points:</strong> {product.points}pt</p>
           <p><strong>Category:</strong> {product.category}</p>
           <p><strong>Description:</strong> {product.description}</p>
         </div>

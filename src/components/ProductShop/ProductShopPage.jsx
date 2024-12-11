@@ -26,6 +26,12 @@ export default function ProductShopPage() {
     ]);
   };
 
+  const handleRemoveFromCart = (product) => {
+    setSelectedProducts((prevProducts) =>
+      prevProducts.filter((item) => item.productId !== product.productId)
+    );
+  };
+
   const sortedProducts = [...products].sort((a, b) => {
     if (sortOrder === "points") {
       return b.points - a.points;
@@ -58,6 +64,7 @@ export default function ProductShopPage() {
         <ProductList
           products={currentProducts}
           handleAddToCart={handleAddToCart}
+          handleRemoveFromCart={handleRemoveFromCart}
         />
         <Pagination
           itemsPerpage={itemsPerPage}
