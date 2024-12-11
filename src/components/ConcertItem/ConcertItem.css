@@ -1,0 +1,44 @@
+.concert-item {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-light);
+  transition: transform 0.3s ease;
+}
+
+.concert-item:hover {
+  transform: translateY(-5px);
+}
+
+.concert-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.concert-details {
+  padding: 16px;
+  flex: 1;
+}
+
+.concert-details h2 {
+  margin-bottom: 8px;
+}
+
+.concert-details p {
+  margin-bottom: 4px;
+}
+
+.ticket-prices ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ticket-prices li {
+  display: inline-block;
+  margin-right: 8px;
+}
+
