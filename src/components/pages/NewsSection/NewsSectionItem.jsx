@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './NewSectionGroup.css';
+import './NewsSectionGroup.css';
 
-const NewSectionItem = ({newsection}) => {
+const NewsSectionItem = ({newsection}) => {
   const truncatedDescription = newsection.description.length > 20
     ? `${newsection.description.substring(0, 40)}...`
     : newsection.description;
@@ -20,4 +20,4 @@ const NewSectionItem = ({newsection}) => {
   );
 };
 
-export default NewSectionItem;
+export default NewsSectionItem;

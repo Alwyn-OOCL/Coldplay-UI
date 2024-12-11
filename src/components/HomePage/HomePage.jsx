@@ -1,13 +1,13 @@
 import React from 'react';
 import HomePoster from '../pages/HomePoster/HomePoster';
 import HomeVideo from '../pages/HomeVideo/HomeVideo';
-import NewSectionGroup from '../pages/NewSection/NewSectionGroup';
+import NewsSectionGroup from '../pages/NewsSection/NewsSectionGroup';
 
 const HomePage = () => {
   return (<div>
     <HomePoster/>
     <HomeVideo/>
-    <NewSectionGroup/>
+    <NewsSectionGroup/>
   </div>);
 };
 
