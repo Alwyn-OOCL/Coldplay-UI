@@ -9,6 +9,8 @@ export default function ProductShopPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOrder, setSortOrder] = useState("points");
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const itemsPerPage = 6;
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -32,7 +34,24 @@ export default function ProductShopPage() {
     );
   };
 
-  const sortedProducts = [...products].sort((a, b) => {
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.productName
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "all" || product.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortOrder === "points") {
       return b.points - a.points;
     } else {
@@ -58,6 +77,26 @@ export default function ProductShopPage() {
           </div>
         </div>
 
+        <div className="filters">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <select
+            className="category-filter"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
+            <option value="all">All Categories</option>
+            <option value="category1">Category 1</option>
+            <option value="category2">Category 2</option>
+            {/* Add more categories as needed */}
+          </select>
+        </div>
+
         <button className="sort-button" onClick={toggleSortOrder}>
           Sort by {sortOrder === "points" ? "Name" : "Points"}
         </button>
@@ -68,7 +107,7 @@ export default function ProductShopPage() {
         />
         <Pagination
           itemsPerpage={itemsPerPage}
-          totalItems={products.length}
+          totalItems={filteredProducts.length}
           paginate={paginate}
           currentPage={currentPage}
         />

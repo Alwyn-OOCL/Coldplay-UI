@@ -40,3 +40,28 @@
 .sort-button:hover {
   background-color: darkred;
 }
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-bar, .category-filter {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 48%;
+  color: #b0b0b0;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.category-filter option {
+  background-color: grey;
+  color: #b0b0b0;
+}
+
+.search-bar::placeholder {
+  color: #b0b0b0; /* Lighter grey color for placeholder text */
+}

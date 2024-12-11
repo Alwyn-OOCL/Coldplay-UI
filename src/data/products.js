@@ -57,7 +57,7 @@ const products = [
   },
   {
     productId: 8,
-    productName: "Fan Backpack",
+    productName: "Fan Zackpack",
     productImage: "path/to/backpack.jpg",
     points: 49,
     category: "Accessories",
