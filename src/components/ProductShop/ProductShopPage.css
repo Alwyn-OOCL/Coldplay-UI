@@ -25,6 +25,7 @@
   border-radius: 50%;
   font-size: 18px;
   z-index: 1;
+  cursor: pointer;
 }
 
 .cart-count {

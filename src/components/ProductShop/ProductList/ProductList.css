@@ -6,7 +6,7 @@
 
 .product-item {
   width: 100%; /* Ensure the item takes full width of the grid cell */
-  height: 300px; /* Set a fixed height */
+  height: 500px; /* Set a fixed height */
   display: flex;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.05);

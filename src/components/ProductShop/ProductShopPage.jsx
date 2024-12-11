@@ -116,7 +116,8 @@ export default function ProductShopPage() {
         </div>
 
         <button className="sort-button" onClick={toggleSortOrder}>
-          <span>Sort by Points </span>{sortOrder === "desc" ? <FaArrowDown /> : <FaArrowUp />}
+          <span>Sort by Points </span>
+          {sortOrder === "desc" ? <FaArrowDown /> : <FaArrowUp />}
         </button>
 
         <ProductList

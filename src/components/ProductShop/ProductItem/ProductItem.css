@@ -9,6 +9,13 @@
   transition: transform 0.3s ease;
 }
 
+.product-image {
+  width: 20%; /* Adjust the width as needed */
+  height: 20%;
+  object-fit: cover;
+  margin: 0 auto; /* Center the image horizontally */
+}
+
 .product-item:hover {
   transform: translateY(-5px);
 }
