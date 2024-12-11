@@ -8,6 +8,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className='footer-links'>
             <h3>Coldplay World Tour</h3>
+            {/*todo dont use https://www.coldplay.com/ Victor*/}
             <a href='https://www.coldplay.com/' className='social-link'>Coldplay</a>
           </div>
           <div className='footer-links'>
