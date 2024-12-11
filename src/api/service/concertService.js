@@ -1,12 +1,6 @@
-// src/services/concertService.js
-import axios from 'axios';
+import baseApi from "../baseApi";
 
-const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8080/api/',
-    headers: {
-        'Content-Type': 'application/json'
-    }
-});
+const axiosInstance = baseApi;
 
 export async function fetchConcerts({ country, city, venue, startDate, endDate }) {
     const params = {};
@@ -16,7 +10,7 @@ export async function fetchConcerts({ country, city, venue, startDate, endDate }
     if (startDate) params.startDate = startDate;
     if (endDate) params.endDate = endDate;
 
-    const response = await axiosInstance.get('concerts/search', { params });
+    const response = await axiosInstance.get('/api/concerts/search', { params });
     const result = response.data;
 
     if (result.success) {
@@ -27,7 +21,7 @@ export async function fetchConcerts({ country, city, venue, startDate, endDate }
 }
 
 export async function fetchLocations() {
-    const response = await axiosInstance.get('locations');
+    const response = await axiosInstance.get('/api/locations');
     const result = response.data;
     if (result.success) {
         // result.data is a list of {country, cities:[{city, venues:[]}]}
