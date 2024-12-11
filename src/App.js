@@ -15,6 +15,8 @@ import ConcertListPage from "../src/pages/ConcertListPage";
 import ConcertDetail from "./components/ConcertDetail/ConcertDetail";
 import BookingDetailPage from "./pages/BookingDetailPage";
 import NewSectionDetail from './components/pages/NewsSection/NewsSectionDetail';
+import MyOrderPage from "./components/pages/MyOrderPage/MyOrderPage";
+
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
               <Route path="/server-error" element={<ServerErrorPage />} />
               <Route path="/booking/:concert_id" element={<BookingPage />} />
               <Route path='/newssections/:id' element={<NewSectionDetail />} />
+              <Route path="/my-orders" element={<MyOrderPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
