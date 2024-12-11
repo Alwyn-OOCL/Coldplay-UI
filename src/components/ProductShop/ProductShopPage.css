@@ -51,6 +51,10 @@
   transition: background-color 0.3s ease;
 }
 
+.sort-button span {
+  margin-top: -20px;
+}
+
 .sort-button:hover {
   background-color: darkred;
 }

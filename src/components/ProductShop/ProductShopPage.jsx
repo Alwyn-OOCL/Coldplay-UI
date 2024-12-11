@@ -4,7 +4,7 @@ import ProductList from "./ProductList/ProductList";
 import products from "../../data/products";
 import ExchangePopUp from "./ExchangePopUp/ExchangePopUp";
 import "./ProductShopPage.css";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 export default function ProductShopPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +19,7 @@ export default function ProductShopPage() {
 
   const toggleSortOrder = () => {
     setSortOrder((prevSortOrder) =>
-      prevSortOrder === "points" ? "name" : "points"
+      prevSortOrder === "desc" ? "asc" : "desc"
     );
   };
 
@@ -62,10 +62,10 @@ export default function ProductShopPage() {
   });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortOrder === "points") {
+    if (sortOrder === "desc") {
       return b.points - a.points;
     } else {
-      return a.productName.localeCompare(b.productName);
+      return a.points - b.points;
     }
   });
 
@@ -81,7 +81,7 @@ export default function ProductShopPage() {
       <main className="container">
         <div className="concert-poster">
           <img
-            src={require('../../assets/images/homeposter.png')}
+            src={require("../../assets/images/homeposter.png")}
             alt="shop poster"
             className="poster-image"
           />
@@ -116,8 +116,9 @@ export default function ProductShopPage() {
         </div>
 
         <button className="sort-button" onClick={toggleSortOrder}>
-          Sort by {sortOrder === "points" ? "Name" : "Points"}
+          <span>Sort by Points </span>{sortOrder === "desc" ? <FaArrowDown /> : <FaArrowUp />}
         </button>
+
         <ProductList
           products={currentProducts}
           handleAddToCart={handleAddToCart}
