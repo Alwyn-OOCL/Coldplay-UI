@@ -50,10 +50,11 @@ export default function Navbar () {
         <div className='navbar-auth'>
           {user ? (
             <div className='user-info'>
-              <div className='user-info'>
+              <div>
                 <div className='user-level'>{user.level}</div>
                 <div className='user-name'>{user.name}</div>
               </div>
+              <button className='logout-button'>Logout</button>
             </div>
           ) : (
             <>
