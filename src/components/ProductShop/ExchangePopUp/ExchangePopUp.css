@@ -14,7 +14,7 @@
 }
 
 .exchange-popup-header {
-  background-color: #4F4F4F; /* Dark Grey 2 */
+  background-color: #4f4f4f; /* Dark Grey 2 */
   padding: 16px;
   border-bottom: 1px solid #ddd;
   display: flex;
@@ -104,4 +104,34 @@
   margin-top: 8px;
   font-weight: bold;
   color: #ddd;
+}
+
+.exchange-item-toggle-btn {
+  background-color: #333333;
+  color: white;
+  border: none;
+  margin-left: 2px; /* Reduced margin between buttons */
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exchange-item-toggle-btn:hover {
+  background-color: #4f4f4f;
+}
+
+
+.exchange-product-price,
+.exchange-product-individual-points,
+.exchange-product-total-points {
+  font-size: 14px;
+  color: #ddd;
+  margin-left: 10px;
+}
+
+.exchange-item-btn-toggle-group {
+  display: flex;
+  gap: 12px
 }
