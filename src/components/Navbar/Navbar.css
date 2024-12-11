@@ -31,3 +31,28 @@
   gap: 16px;
 }
 
+.logo-break {
+    display: block;
+}
+
+/* Navbar.css */
+.user-info {
+  display: block;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-level {
+  font-weight: bold;
+  font-size: 20px;
+  color: #e57373;
+  margin-right: 5px; /* Add a small gap */
+}
+
+.user-name {
+  font-size: 18px;
+  color: #e57373;
+  font-weight: bold;
+  display: block;
+}
+

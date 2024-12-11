@@ -5,8 +5,7 @@ import {useNavigate} from 'react-router-dom';
 export default function HomePoster () {
   const navigate = useNavigate();
   const handleGetTicket = () => {
-    // todo victor
-    navigate('/concerts'); // 跳转到首页
+    navigate('/concerts');
   };
 
   return (
