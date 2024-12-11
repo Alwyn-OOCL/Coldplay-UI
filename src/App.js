@@ -12,6 +12,7 @@ import ServerErrorPage from "./components/pages/ServerErrorPage";
 import { AuthProvider } from "./contexts/AuthContext";
 import darkTheme from "./theme";
 import ConcertListPage from "../src/pages/ConcertListPage";
+import ConcertDetail from "./components/ConcertDetail/ConcertDetail";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/concerts" element={<ConcertListPage />} />
+              <Route path="/concert/:concert_id" element={<ConcertDetail />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/server-error" element={<ServerErrorPage />} />

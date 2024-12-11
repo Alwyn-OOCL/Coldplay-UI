@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ConcertDetail() {
   
-  const { id } = useParams();
+  const { concert_id } = useParams();
   const navigate = useNavigate();
   const [concert, setConcert] = useState(null);
 
@@ -17,17 +17,17 @@ export default function ConcertDetail() {
     const storedUser = localStorage.getItem("user");
 
     if (storedUser) {
-      navigate(`/booking/${id}`);
+      navigate(`/booking/${concert_id}`);
     } else {
       navigate(`/login`);
     }
   };
 
   useEffect(() => {
-    concertDetail(id).then((result) => {
+    concertDetail(concert_id).then((result) => {
       setConcert(result.data);
     });
-  }, [id]);
+  }, [concert_id]);
 
   return (
     <div className="concert-detail-page">
@@ -71,7 +71,7 @@ export default function ConcertDetail() {
             </div>
           </div>
 
-          <div className="concert-info-grid">
+          <div className="concert-info-grconcert_id">
             <div className="venue-details">
               <h2>Venue Details</h2>
               <p>{concert?.venueAddress}</p>
