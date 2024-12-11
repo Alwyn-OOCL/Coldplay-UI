@@ -79,6 +79,13 @@ export default function ProductShopPage() {
   return (
     <div className="product-list-page">
       <main className="container">
+        <div className="concert-poster">
+          <img
+            src={require('../../assets/images/homeposter.png')}
+            alt="shop poster"
+            className="poster-image"
+          />
+        </div>
         <div className="header">
           <h1>Coldplay Exclusive Products</h1>
           <div className="cart-icon" onClick={handleCartIconClick}>
