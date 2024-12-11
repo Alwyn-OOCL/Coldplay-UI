@@ -9,7 +9,7 @@ export default function ConcertItem({ concert }) {
   const timeString = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   const ticketPrices = concert.areas
-      ? concert.areas.map(a => `Area ${a.areaType}: $${a.price}`)
+      ? concert.areas.map(a => `${a.areaType}: $${a.price}`)
       : [];
 
   return (
