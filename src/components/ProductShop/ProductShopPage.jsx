@@ -101,9 +101,10 @@ export default function ProductShopPage() {
             onChange={handleCategoryChange}
           >
             <option value="all">All Categories</option>
-            <option value="category1">Category 1</option>
-            <option value="category2">Category 2</option>
-            {/* Add more categories as needed */}
+            <option value="Apparel">Apparel</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Decor">Decor</option>
+            <option value="Stationery">Stationery</option>
           </select>
         </div>
 

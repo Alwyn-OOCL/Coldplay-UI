@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './ProductItem.css';
 
 export default function ProductItem({ product, handleAddToCart, handleRemoveFromCart }) {
+  
   const [quantity, setQuantity] = useState(0);
 
   const handleAddClick = () => {
