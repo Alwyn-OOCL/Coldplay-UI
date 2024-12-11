@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ExchangePopUp.css";
 import { useNavigate } from "react-router-dom";
+import { FaCheck } from "react-icons/fa";
 
 export default function ExchangePopUp({
   selectedProducts,
@@ -8,6 +9,7 @@ export default function ExchangePopUp({
   updateSelectedProducts,
 }) {
   const [products, setProducts] = useState(selectedProducts);
+  const [success, setSuccess] = useState(false);
 
   const navigate = useNavigate();
 
@@ -56,9 +58,9 @@ export default function ExchangePopUp({
     const storedUser = localStorage.getItem("userToken");
 
     if (storedUser) {
-      onClose();
       setProducts([]);
       updateSelectedProducts([]);
+      setSuccess(true);
     } else {
       navigate(`/login`);
     }
@@ -75,7 +77,12 @@ export default function ExchangePopUp({
           </button>
         </div>
         <div className="exchange-popup-content">
-          {groupedProducts.length > 0 ? (
+          {success ? (
+            <div className="exchange-success">
+              <FaCheck size={50} color="green" />
+              <p>Exchange Successful!</p>
+            </div>
+          ) : groupedProducts.length > 0 ? (
             <>
               {groupedProducts.map((product) => (
                 <div key={product.productId} className="exchange-product-item">
@@ -118,18 +125,18 @@ export default function ExchangePopUp({
         <div className="exchange-popup-footer">
           {totalPoints > userPoints && (
             <div className="exchange-error-message">
-              You do not have enough points to complete this exchange.(Only {userPoints} points available)
+              You do not have enough points to complete this exchange. (Only {userPoints} points available)
             </div>
           )}
-          <button className="exchange-popup-button" onClick={onClose}>
-            Close
-          </button>
           <button
             className="exchange-popup-button"
             onClick={handleExchange}
             disabled={totalPoints > userPoints}
           >
             Exchange
+          </button>
+          <button className="exchange-popup-button" onClick={onClose}>
+            Close
           </button>
         </div>
       </div>

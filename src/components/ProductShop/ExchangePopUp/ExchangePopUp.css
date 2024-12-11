@@ -122,7 +122,6 @@
   background-color: #4f4f4f;
 }
 
-
 .exchange-product-price,
 .exchange-product-individual-points,
 .exchange-product-total-points {
@@ -133,11 +132,20 @@
 
 .exchange-item-btn-toggle-group {
   display: flex;
-  gap: 12px
+  gap: 12px;
 }
 
 .exchange-error-message {
   color: red;
   font-size: 14px;
   margin-top: 8px;
+}
+
+.exchange-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
 }
