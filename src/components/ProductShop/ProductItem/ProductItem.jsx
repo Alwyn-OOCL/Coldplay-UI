@@ -9,7 +9,7 @@ export default function ProductItem({ product }) {
         <img src={product.productImage} alt={product.productName} className="product-image" />
         <div className="product-details">
           <h2>{product.productName}</h2>
-          <p><strong>Price:</strong> ${product.price}</p>
+          <p><strong>Points:</strong> {product.price}pt</p>
           <p><strong>Category:</strong> {product.category}</p>
           <p><strong>Description:</strong> {product.description}</p>
         </div>

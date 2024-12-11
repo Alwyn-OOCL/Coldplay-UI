@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductItem from './ProductItem';
+import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css';
 
 export default function ProductList({ products }) {
