@@ -26,3 +26,25 @@
   opacity: 0.9;
 }
 
+/* src/components/FilterOptions/FilterOptions.css */
+
+.filter-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.dropdown-input {
+  padding: 5px;
+  font-size: 14px;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+
+.dropdown-input:focus {
+  outline: none;
+  border-color: #888;
+  background: #fff;
+}

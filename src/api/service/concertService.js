@@ -2,17 +2,12 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8080/api/', // Backend base URL
+    baseURL: 'http://localhost:8080/api/',
     headers: {
         'Content-Type': 'application/json'
     }
 });
 
-/**
- * Fetch concerts from the backend with optional filters and date range.
- * @param {Object} filtersAndDates - { country, city, venue, startDate, endDate }
- * @returns {Promise<Array>} - Array of concert detail objects
- */
 export async function fetchConcerts({ country, city, venue, startDate, endDate }) {
     const params = {};
     if (country) params.country = country;
@@ -25,8 +20,19 @@ export async function fetchConcerts({ country, city, venue, startDate, endDate }
     const result = response.data;
 
     if (result.success) {
-        return result.data; // Array of concerts with venue and areas
+        return result.data;
     } else {
         throw new Error(result.errorMsg || 'Failed to fetch concerts');
+    }
+}
+
+export async function fetchLocations() {
+    const response = await axiosInstance.get('locations');
+    const result = response.data;
+    if (result.success) {
+        // result.data is a list of {country, cities:[{city, venues:[]}]}
+        return result.data;
+    } else {
+        throw new Error(result.errorMsg || 'Failed to fetch locations');
     }
 }
