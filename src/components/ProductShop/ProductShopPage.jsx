@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Pagination from "./Pagination/Pagination";
 import ProductList from "./ProductList/ProductList";
 import products from "../../data/products";
+import ExchangePopUp from "./ExchangePopUp/ExchangePopUp";
 import "./ProductShopPage.css";
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -11,6 +12,7 @@ export default function ProductShopPage() {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const itemsPerPage = 6;
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -42,6 +44,14 @@ export default function ProductShopPage() {
     setSelectedCategory(e.target.value);
   };
 
+  const handleCartIconClick = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.productName
       .toLowerCase()
@@ -71,7 +81,7 @@ export default function ProductShopPage() {
       <main className="container">
         <div className="header">
           <h1>Cold Play Exclusive Products</h1>
-          <div className="cart-icon">
+          <div className="cart-icon" onClick={handleCartIconClick}>
             <FaShoppingCart />
             <span className="cart-count">{selectedProducts.length}</span>
           </div>
@@ -112,6 +122,7 @@ export default function ProductShopPage() {
           currentPage={currentPage}
         />
       </main>
+      {isPopupOpen && <ExchangePopUp onClose={handleClosePopup} selectedProducts={selectedProducts} />}
     </div>
   );
 }
