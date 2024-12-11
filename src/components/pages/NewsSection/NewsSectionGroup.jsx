@@ -10,7 +10,7 @@ export default function NewsSectionGroup () {
   const [newsItems, setNewsItems] = useState([]);
 
   useEffect(() => {
-    baseApi.get('/newsections')
+    baseApi.get('/newssections')
       .then(response => {
         setNewsItems(response.data.data);
       })
