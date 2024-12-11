@@ -1,0 +1,11 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Adjust the gap between items as needed */
+}
+
+.product-list > * {
+  flex: 1 1 calc(33.333% - 16px); /* Adjust the width and gap as needed */
+  box-sizing: border-box;
+}
+

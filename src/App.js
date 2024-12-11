@@ -13,6 +13,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import darkTheme from "./theme";
 import ConcertListPage from "../src/pages/ConcertListPage";
 import ConcertDetail from "./components/ConcertDetail/ConcertDetail";
+import ProductShopPage from "./components/ProductShop/ProductShopPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/server-error" element={<ServerErrorPage />} />
               <Route path="/booking/:concert_id" element={<BookingPage />} />
+              <Route path="/shop" element={<ProductShopPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
