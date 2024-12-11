@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Box, Typography, Card, CardContent, CardMedia, List, ListItem, ListItemText, Chip} from '@mui/material';
-import { getOrderDetail } from '../../../api/pages/orderDetailApi';
-import { refundTicket } from '../../../api/pages/orderDetailApi';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {Box, List, ListItem, Typography} from '@mui/material';
+import {getOrderDetail, refundTicket} from '../../../api/pages/orderDetailApi';
 import ConfirmRefundDialog from './ConfirmRefundDialog';
 import TicketCard from './TicketCard';
 import ConcertDetail from './ConcertDetail';

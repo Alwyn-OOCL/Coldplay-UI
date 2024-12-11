@@ -1,7 +1,5 @@
 // src/pages/ConcertListPage.js
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar/Navbar';
-import Footer from '../components/Footer/Footer';
 import ConcertList from '../components/ConcertList/ConcertList';
 import DateRangeSearch from '../components/DateRangeSearch/DateRangeSearch';
 import FilterOptions from '../components/FilterOptions/FilterOptions';
