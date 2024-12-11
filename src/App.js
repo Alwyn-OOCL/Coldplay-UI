@@ -17,6 +17,7 @@ import NewSectionDetail from './components/pages/NewsSection/NewsSectionDetail';
 import MyOrderPage from "./components/pages/MyOrderPage/MyOrderPage";
 import OrderDetailPage from "./components/pages/orderDetailPage/OrderDetailPage";
 
+import ProductShopPage from "./components/ProductShop/ProductShopPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path='/newssections/:id' element={<NewSectionDetail />} />
               <Route path="/my-orders" element={<MyOrderPage />} />
               <Route path="/orders/:orderId" element={<OrderDetailPage />} />
+              <Route path="/shop" element={<ProductShopPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>

@@ -60,6 +60,7 @@ export default function Navbar () {
           <a href='/' className='nav-link'>Homepage</a>
           <a href='/concerts' className='nav-link'>Concerts</a>
           <a href='/my-orders' className='nav-link'>My Orders</a>
+          <a href='/shop' className='nav-link'>Shop</a>
         </div>
         <div className='navbar-auth'>
           {user ? (

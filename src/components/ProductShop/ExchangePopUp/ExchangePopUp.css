@@ -1,0 +1,137 @@
+/* ExchangePopUp.css */
+
+.exchange-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; /* Increased width */
+  background-color: #333333; /* Dark Grey 1 */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.exchange-popup-header {
+  background-color: #4f4f4f; /* Dark Grey 2 */
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exchange-popup-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.exchange-popup-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.exchange-popup-content {
+  padding: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+  color: #ddd; /* Light grey for contrast */
+}
+
+.exchange-popup-footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.exchange-popup-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.exchange-popup-button:hover {
+  background-color: darkred;
+}
+
+.exchange-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.exchange-product-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+}
+
+.exchange-product-item:last-child {
+  border-bottom: none;
+}
+
+.exchange-product-name {
+  font-size: 16px;
+}
+
+.exchange-product-points {
+  font-size: 14px;
+  color: #ddd;
+}
+
+.exchange-product-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #ddd;
+}
+
+.exchange-item-toggle-btn {
+  background-color: #333333;
+  color: white;
+  border: none;
+  margin-left: 2px; /* Reduced margin between buttons */
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exchange-item-toggle-btn:hover {
+  background-color: #4f4f4f;
+}
+
+
+.exchange-product-price,
+.exchange-product-individual-points,
+.exchange-product-total-points {
+  font-size: 14px;
+  color: #ddd;
+  margin-left: 10px;
+}
+
+.exchange-item-btn-toggle-group {
+  display: flex;
+  gap: 12px
+}

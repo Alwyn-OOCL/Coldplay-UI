@@ -1,0 +1,87 @@
+.product-item {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-light);
+  transition: transform 0.3s ease;
+}
+
+.product-image {
+  width: 20%; /* Adjust the width as needed */
+  height: 20%;
+  object-fit: cover;
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.product-details {
+  padding: 16px;
+}
+
+.product-details h2 {
+  margin-bottom: 8px;
+}
+
+.product-details p {
+  margin-bottom: 4px;
+}
+
+.add-to-cart-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: darkred;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+}
+
+.decrease-button,
+.increase-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+.decrease-button:hover,
+.increase-button:hover {
+  background-color: darkred;
+}
+
+.quantity {
+  margin: 0 20px;
+  font-size: 16px;
+}
