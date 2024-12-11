@@ -5,7 +5,6 @@ import { concertDetail } from "../../api/concertDetailApi";
 import { useNavigate } from "react-router-dom";
 
 export default function ConcertDetail() {
-  
   const { concert_id } = useParams();
   const navigate = useNavigate();
   const [concert, setConcert] = useState(null);
@@ -71,7 +70,16 @@ export default function ConcertDetail() {
             </div>
           </div>
 
-          <div className="concert-info-grconcert_id">
+          <div className="concert-description">
+            <h2>Concert Description</h2>
+            <p>{concert?.concertDescription}</p>
+            <p>
+              Don't miss out on what promises to be one of the most talked-about
+              concerts of the year!
+            </p>
+          </div>
+
+          <div className="concert-info-grid">
             <div className="venue-details">
               <h2>Venue Details</h2>
               <p>{concert?.venueAddress}</p>
@@ -100,15 +108,6 @@ export default function ConcertDetail() {
               alt="Venue seat map"
               className="seat-map-image"
             />
-          </div>
-
-          <div className="concert-description">
-            <h2>Event Description</h2>
-            <p>{concert?.concertDescription}</p>
-            <p>
-              Don't miss out on what promises to be one of the most talked-about
-              concerts of the year!
-            </p>
           </div>
 
           <div className="purchase-section">
