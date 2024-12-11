@@ -1,5 +1,42 @@
-.concert-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+.product-list-page {
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.sort-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-button:hover {
+  background-color: darkred;
+}

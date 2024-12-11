@@ -3,16 +3,27 @@ import Pagination from "./Pagination/Pagination";
 import ProductList from "./ProductList/ProductList";
 import products from "../../data/products";
 import "./ProductShopPage.css";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function ProductShopPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOrder, setSortOrder] = useState("points");
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const itemsPerPage = 6;
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const toggleSortOrder = () => {
-    setSortOrder((prevSortOrder) => (prevSortOrder === "points" ? "name" : "points"));
+    setSortOrder((prevSortOrder) =>
+      prevSortOrder === "points" ? "name" : "points"
+    );
+  };
+
+  const handleAddToCart = (product) => {
+    setSelectedProducts((prevSelectedProducts) => [
+      ...prevSelectedProducts,
+      product,
+    ]);
   };
 
   const sortedProducts = [...products].sort((a, b) => {
@@ -25,17 +36,29 @@ export default function ProductShopPage() {
 
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-  const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = sortedProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   return (
-    <div className="concert-list-page">
+    <div className="product-list-page">
       <main className="container">
-        <h1>Cold Play Exclusive Products</h1>
+        <div className="header">
+          <h1>Cold Play Exclusive Products</h1>
+          <div className="cart-icon">
+            <FaShoppingCart />
+            <span className="cart-count">{selectedProducts.length}</span>
+          </div>
+        </div>
 
         <button className="sort-button" onClick={toggleSortOrder}>
           Sort by {sortOrder === "points" ? "Name" : "Points"}
         </button>
-        <ProductList products={currentProducts} />
+        <ProductList
+          products={currentProducts}
+          handleAddToCart={handleAddToCart}
+        />
         <Pagination
           itemsPerpage={itemsPerPage}
           totalItems={products.length}
