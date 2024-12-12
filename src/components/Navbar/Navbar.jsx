@@ -27,6 +27,17 @@ export default function Navbar() {
 
   const { userId, clearToken } = useAuth();
 
+  const handleMouseMove = () => {
+    if (userId) {
+      baseApi
+      .get(`/user/${userId}`)
+      .then((response) => {
+        setUser(response.data.data);
+      })
+      .finally(() => {});
+    }
+  }
+
   useEffect(() => {
     if (userId) {
       baseApi
@@ -90,7 +101,7 @@ export default function Navbar() {
         </div>
         <div className="navbar-auth">
           {user ? (
-            <div className="user-info" onClick={toggleDropdown} onMouseEnter={showDropdown} 
+            <div className="user-info" onMouseOver={handleMouseMove} onClick={toggleDropdown} onMouseEnter={showDropdown}
             onMouseLeave={hideDropdown}>
               <div className="user-tab">
                 <FaUserCircle size={24} />

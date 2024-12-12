@@ -58,7 +58,7 @@ export default function ProductShopPage() {
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const filteredProducts = products.filter((product) => {
