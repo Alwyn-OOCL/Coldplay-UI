@@ -80,7 +80,7 @@ const MyOrderPage = () => {
       </Typography>
       {orders.length === 0 ? (
         <>
-          <Typography variant="body1" color="textSecondary">
+          <Typography variant="h5" color="textSecondary" align="center">
             You have no orders. Book a concert now!
           </Typography>
           <HomePoster />
