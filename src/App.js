@@ -18,6 +18,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import darkTheme from "./theme";
 
 import ProductShopPage from "./components/ProductShop/ProductShopPage";
+import Promotion from './components/pages/Promotion/Promotion';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="/my-orders" element={<MyOrderPage />} />
               <Route path="/orders/:orderId" element={<OrderDetailPage />} />
               <Route path="/shop" element={<ProductShopPage />} />
+              <Route path="/promotions" element={<Promotion/>}/>
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
