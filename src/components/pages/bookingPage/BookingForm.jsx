@@ -1,17 +1,17 @@
-import React, {
-  useEffect,
-  useState
-} from 'react';
 import {
-  Box,
-  Card,
-  CardContent,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography
+    Box,
+    Card,
+    CardContent,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    Typography
 } from '@mui/material';
+import React, {
+    useEffect,
+    useState
+} from 'react';
 import AudienceInfo from './AudienceInfo';
 
 const BookingForm = ({ formData, handleChange, handleNext, concert }) => {

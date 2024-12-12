@@ -1,5 +1,5 @@
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
-import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
 
 const ConcertDetail = ({ orderDetail, totalAmount }) => {
   return (

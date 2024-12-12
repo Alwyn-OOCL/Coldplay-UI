@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./ExchangePopUp.css";
-import { useNavigate } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import "./ExchangePopUp.css";
 
 export default function ExchangePopUp({
   selectedProducts,
