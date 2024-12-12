@@ -1,6 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePoster.css';
-import {useNavigate} from 'react-router-dom';
 
 export default function HomePoster () {
   const navigate = useNavigate();

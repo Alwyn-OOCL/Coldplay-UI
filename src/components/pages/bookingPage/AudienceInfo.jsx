@@ -1,5 +1,5 @@
+import { Box, TextField, Typography } from '@mui/material';
 import React from 'react';
-import { Box, Typography, TextField } from '@mui/material';
 
 const AudienceInfo = ({ audienceDetails, handleChange, errors, setErrors }) => {
   return (

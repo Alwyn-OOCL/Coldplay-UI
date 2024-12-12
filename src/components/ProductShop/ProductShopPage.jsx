@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Pagination from "./Pagination/Pagination";
-import ProductList from "./ProductList/ProductList";
+import { FaArrowDown, FaArrowUp, FaShoppingCart } from "react-icons/fa";
 import products from "../../data/products";
 import ExchangePopUp from "./ExchangePopUp/ExchangePopUp";
+import Pagination from "./Pagination/Pagination";
+import ProductList from "./ProductList/ProductList";
 import "./ProductShopPage.css";
-import { FaShoppingCart, FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 export default function ProductShopPage() {
   const [currentPage, setCurrentPage] = useState(1);

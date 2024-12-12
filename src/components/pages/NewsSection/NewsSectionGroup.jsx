@@ -1,10 +1,10 @@
 import React, {
-  useEffect,
-  useState
+    useEffect,
+    useState
 } from 'react';
 import baseApi from '../../../api/baseApi';
-import NewsSectionItem from './NewsSectionItem';
 import './NewsSectionGroup.css';
+import NewsSectionItem from './NewsSectionItem';
 
 export default function NewsSectionGroup () {
   const [newsItems, setNewsItems] = useState([]);

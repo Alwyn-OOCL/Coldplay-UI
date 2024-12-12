@@ -1,5 +1,5 @@
+import { Box, Card, CardContent, Chip, ListItemText } from '@mui/material';
 import React from 'react';
-import { Card, CardContent, ListItemText, Box, Chip } from '@mui/material';
 
 const TicketCard = ({ ticket, index, handleOpenDialog }) => {
   return (

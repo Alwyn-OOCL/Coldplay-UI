@@ -1,20 +1,20 @@
+import {
+    Box,
+    Card,
+    CardContent,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    Typography,
+} from "@mui/material";
 import React, {
-  useEffect,
-  useState
+    useEffect,
+    useState
 } from "react";
 import {
-  Box,
-  Card,
-  CardContent,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
-import {
-  getPaymentChannels,
-  makePayment,
+    getPaymentChannels,
+    makePayment,
 } from "../../../api/pages/bookingPage/bookingApi";
 import CreditCardForm from "./CreditCardForm";
 

@@ -2,12 +2,12 @@ import React, {
   useEffect,
   useState
 } from 'react';
-import {useNavigate} from 'react-router-dom';
-import './Navbar.css';
-import '../../assets/styles/global.css';
+import { useNavigate } from 'react-router-dom';
 import baseApi from '../../api/baseApi';
-import {useAuth} from "../../contexts/AuthContext";
 import logo from '../../assets/images/logo.svg';
+import '../../assets/styles/global.css';
+import { useAuth } from "../../contexts/AuthContext";
+import './Navbar.css';
 
 export default function Navbar () {
   const navigate = useNavigate();

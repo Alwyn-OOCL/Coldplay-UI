@@ -1,15 +1,15 @@
+import { Box, Card, CardContent, Container, Grid } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Grid, Card, CardContent, Box } from '@mui/material';
-import ConcertDetail from './ConcertDetail';
-import BookingForm from './BookingForm';
+import { concertDetail } from '../../../api/concertDetailApi';
 import darkTheme from '../../../theme';
-import { ThemeProvider } from '@mui/material/styles';
-import StepsBar from './StepsBar';
+import BookingForm from './BookingForm';
+import ConcertDetail from './ConcertDetail';
 import Confirmation from './Confirmation';
 import Payment from './Payment';
 import Result from './Result';
-import { concertDetail } from '../../../api/concertDetailApi';
+import StepsBar from './StepsBar';
 
 const mockedConcertData = {
   success: true,
