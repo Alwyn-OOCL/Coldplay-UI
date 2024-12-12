@@ -173,7 +173,7 @@ export default function FilterOptions({
         )}
       </div>
 
-      <button type="button" onClick={clearAll}>
+      <button type="button" onClick={clearAll} className={"filter-options-clear-all"}>
         Clear All
       </button>
     </div>
