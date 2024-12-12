@@ -22,8 +22,9 @@
 .news-item {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 12px;
+    padding: 24px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     text-decoration: none;
@@ -36,18 +37,23 @@
 }
 
 .news-content {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding-right: 16px;
+    min-height: 50px; /* Ensure there is enough height to display the date */
 }
 
 .news-content h3 {
     font-size: 34px;
     margin: 0;
+    line-height: 1.5; /* Increase line height */
 }
 
 .news-content p {
-    font-size: 26px;
+    font-size: 18px;
     margin: 0;
+    line-height: 1.5; /* Increase line height */
 }
 
 .news-image {
@@ -71,17 +77,6 @@
   object-fit: cover; /* Ensure the image covers the area without distortion */
 }
 
-.more-link {
-    display: inline-block;
-    color: var(--text-gray);
-    text-decoration: none;
-    font-size: 20px;
-    transition: color 0.3s ease;
-}
-
-.more-link:hover {
-    color: var(--text-light);
-}
 
 .newsection-detail {
   padding: 20px;
@@ -113,4 +108,31 @@
   word-wrap: break-word; /* Allow long words to break and wrap to the next line */
   max-height: 200px; /* Set a maximum height */
   overflow-y: auto; /* Enable vertical scrolling for overflow content */
+}
+
+.description-box {
+  padding: 10px; /* Reduce padding */
+  background-color: #333;
+  max-height: 150px; /* Set a maximum height */
+  overflow-y: auto; /* Enable vertical scrolling for overflow content */
+  max-width: 800px; /* Set a maximum width */
+  word-wrap: break-word; /* Ensure long words break and wrap to the next line */
+    margin: 0 auto;
+}
+
+.newsection-detail {
+  position: relative;
+}
+
+.publication-date {
+  /*position: absolute;*/
+  top: 10px;
+  left: 10px;
+  font-size: 18px; /* Increase font size */
+  font-weight: bold; /* Make the text bold */
+  color: var(--text-light);
+}
+
+.publication-content {
+    display: flex;
 }

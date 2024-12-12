@@ -32,10 +32,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%; /* Ensure the image container takes half the width */
+    width: 20%; /* Ensure the image container takes half the width */
 }
 
-.concert-image { /* Set the desired height */
+.home-concert-image { /* Set the desired height */
   border-radius: 16px;
+    width: 100%;
   object-fit: cover; /* Ensure the image covers the container */
 }

@@ -22,7 +22,7 @@ export default function HomePoster () {
           <img
             src={require('../../../assets/images/homeposter.png')}
             alt='Vibrant concert atmosphere'
-            className='concert-image'
+            className='home-concert-image'
           />
         </div>
       </div>
