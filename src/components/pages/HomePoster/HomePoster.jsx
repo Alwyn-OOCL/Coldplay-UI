@@ -13,7 +13,7 @@ export default function HomePoster () {
       <div className='container homeposter-container'>
         <div className='homeposter-content'>
           <h1 className='homeposter-title'>
-            Experience Cold play's World Tour & enjoy the music live!
+            Experience Coldplay's World Tour & enjoy the music live!
           </h1>
           <p className='homeposter-subtitle'>Join us for an unforgettable journey as Coldplay takes the stage across the globe.</p>
           <button className='button button-primary' onClick={handleGetTicket}>Get Tickets</button>

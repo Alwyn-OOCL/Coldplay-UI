@@ -4,15 +4,15 @@
 
 /* HomePoster.css */
 .homeposter-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .homeposter-content {
-  max-width: 600px;
+    flex: 1;
+    padding-right: 20px; /* Add some padding to the right */
 }
 
 .homeposter-title {
@@ -27,16 +27,15 @@
   margin-bottom: 32px;
 }
 
-.concert-image {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
+.homeposter-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* Ensure the image container takes half the width */
 }
 
-.image-caption {
-  position: absolute;
-  bottom: -24px;
-  right: 0;
-  color: var(--text-gray);
-  font-size: 14px;
+.concert-image { /* Set the desired height */
+  border-radius: 16px;
+  object-fit: cover; /* Ensure the image covers the container */
 }
