@@ -128,13 +128,14 @@ export default function ExchangePopUp({
               You do not have enough points to complete this exchange. (Only {userPoints} points available)
             </div>
           )}
+          {!success ? (
           <button
             className="exchange-popup-button"
             onClick={handleExchange}
             disabled={totalPoints > userPoints}
           >
             Exchange
-          </button>
+          </button>) : <></>}
           <button className="exchange-popup-button" onClick={onClose}>
             Close
           </button>
