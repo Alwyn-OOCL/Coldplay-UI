@@ -8,17 +8,16 @@ export default function Footer() {
         <div className="footer-grid">
           <div className='footer-links'>
             <h3>Coldplay World Tour</h3>
-            {/*todo dont use https://www.coldplay.com/ Victor*/}
-            <a href='https://www.coldplay.com/' className='social-link'>Coldplay</a>
           </div>
           <div className='footer-links'>
             <h3>Social</h3>
-            <a href='https://m.weibo.cn/u/7502254158?t=0&luicode=10000011&lfid=231583' className='social-link'>Micro-blog</a>
+            <div className='social-icons'>
+              <img src={require('../../assets/images/icon/ins.png')} alt='Ins' className='social-icon' />
+              <img src={require('../../assets/images/icon/Twitter.png')} alt='Twitter' className='social-icon' />
+              <img src={require('../../assets/images/icon/Youtube.png')} alt='Youtube' className='social-icon' />
+              <img src={require('../../assets/images/icon/facebook.png')} alt='Facebook' className='social-icon' />
+            </div>
           </div>
-          {/*<div className="footer-links">*/}
-          {/*  <h3>FAQs</h3>*/}
-          {/*  <a href="#" className='social-link'>Support</a>*/}
-          {/*</div>*/}
         </div>
       </div>
     </footer>
