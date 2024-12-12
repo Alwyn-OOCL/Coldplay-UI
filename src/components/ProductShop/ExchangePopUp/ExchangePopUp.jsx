@@ -68,7 +68,7 @@ export default function ExchangePopUp({
 
   return (
     <>
-      <div className="exchange-popup-overlay" onClick={onClose}></div>
+      <div className="exchange-popup-overlay"></div>
       <div className="exchange-popup">
         <div className="exchange-popup-header">
           <h2>Selected Products</h2>

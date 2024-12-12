@@ -43,10 +43,12 @@ export default function ProductShopPage() {
   };
 
   const handleSearchChange = (e) => {
+    setCurrentPage(1);
     setSearchQuery(e.target.value);
   };
 
   const handleCategoryChange = (e) => {
+    setCurrentPage(1);
     setSelectedCategory(e.target.value);
   };
 
