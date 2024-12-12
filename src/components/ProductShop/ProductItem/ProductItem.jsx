@@ -33,7 +33,7 @@ export default function ProductItem({ product, handleAddToCart, handleRemoveFrom
 
   return (
     <div className="product-item">
-      <Link to={`/product/${product.productId}`} className="product-link">
+      <Link className="product-link">
         <img className="product-image" src={require("../../../assets/images/shop/"+product.productImage)} alt={product.productName} />
         <div className="product-details">
           <h2>{product.productName}</h2>
