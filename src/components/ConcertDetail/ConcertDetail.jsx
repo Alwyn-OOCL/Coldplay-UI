@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./ConcertDetail.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { concertDetail } from "../../api/concertDetailApi";
-import { useNavigate } from "react-router-dom";
+import "./ConcertDetail.css";
 
 export default function ConcertDetail() {
   const { concert_id } = useParams();
@@ -52,7 +51,7 @@ export default function ConcertDetail() {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
-                    }
+                    },
                   )}
               </p>
               <p>
@@ -62,7 +61,7 @@ export default function ConcertDetail() {
                   {
                     hour: "numeric",
                     minute: "numeric",
-                  }
+                  },
                 )}
                 {" - "}
                 Duration: {concert?.concertDuration} hours

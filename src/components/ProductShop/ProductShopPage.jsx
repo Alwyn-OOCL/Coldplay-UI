@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Pagination from "./Pagination/Pagination";
-import ProductList from "./ProductList/ProductList";
+import { FaArrowDown, FaArrowUp, FaShoppingCart } from "react-icons/fa";
 import products from "../../data/products";
 import ExchangePopUp from "./ExchangePopUp/ExchangePopUp";
+import Pagination from "./Pagination/Pagination";
+import ProductList from "./ProductList/ProductList";
 import "./ProductShopPage.css";
-import { FaShoppingCart, FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 export default function ProductShopPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +19,7 @@ export default function ProductShopPage() {
 
   const toggleSortOrder = () => {
     setSortOrder((prevSortOrder) =>
-      prevSortOrder === "desc" ? "asc" : "desc"
+      prevSortOrder === "desc" ? "asc" : "desc",
     );
   };
 
@@ -32,7 +32,7 @@ export default function ProductShopPage() {
 
   const handleRemoveFromCart = (product) => {
     setSelectedProducts((prevProducts) =>
-      prevProducts.filter((item) => item.productId !== product.productId)
+      prevProducts.filter((item) => item.productId !== product.productId),
     );
   };
 
@@ -73,7 +73,7 @@ export default function ProductShopPage() {
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   const currentProducts = sortedProducts.slice(
     indexOfFirstProduct,
-    indexOfLastProduct
+    indexOfLastProduct,
   );
 
   return (

@@ -1,9 +1,9 @@
-import React from 'react';
-import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import React from "react";
 
 const ConcertDetail = ({ orderDetail, totalAmount }) => {
   return (
-    <Box sx={{ display: 'flex', gap: 2, marginBottom: 2 }}>
+    <Box sx={{ display: "flex", gap: 2, marginBottom: 2 }}>
       <Card sx={{ width: 300 }}>
         <CardMedia
           component="img"
@@ -35,7 +35,8 @@ const ConcertDetail = ({ orderDetail, totalAmount }) => {
             Description: {orderDetail.description}
           </Typography>
           <Typography variant="body1" color="textSecondary" component="div">
-            Total Amount: ${orderDetail.areaPrice} X {orderDetail.tickets.length} = ${totalAmount}
+            Total Amount: ${orderDetail.areaPrice} X{" "}
+            {orderDetail.tickets.length} = ${totalAmount}
           </Typography>
         </CardContent>
       </Card>

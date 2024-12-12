@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./ExchangePopUp.css";
-import { useNavigate } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import "./ExchangePopUp.css";
 
 export default function ExchangePopUp({
   selectedProducts,
@@ -30,7 +30,7 @@ export default function ExchangePopUp({
   const groupedProducts = groupProducts(products);
   const totalPoints = groupedProducts.reduce(
     (sum, product) => sum + product.points * product.quantity,
-    0
+    0,
   );
 
   const handleIncrease = (productId) => {
@@ -44,7 +44,7 @@ export default function ExchangePopUp({
 
   const handleDecrease = (productId) => {
     const productIndex = products.findIndex(
-      (product) => product.productId === productId
+      (product) => product.productId === productId,
     );
     if (productIndex !== -1) {
       const updatedProducts = [...products];
@@ -125,7 +125,8 @@ export default function ExchangePopUp({
         <div className="exchange-popup-footer">
           {totalPoints > userPoints && (
             <div className="exchange-error-message">
-              You do not have enough points to complete this exchange. (Only {userPoints} points available)
+              You do not have enough points to complete this exchange. (Only{" "}
+              {userPoints} points available)
             </div>
           )}
           <button

@@ -1,46 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Container, Grid, Card, CardContent, Box } from '@mui/material';
-import ConcertDetail from './ConcertDetail';
-import BookingForm from './BookingForm';
-import darkTheme from '../../../theme';
-import { ThemeProvider } from '@mui/material/styles';
-import StepsBar from './StepsBar';
-import Confirmation from './Confirmation';
-import Payment from './Payment';
-import Result from './Result';
-import { concertDetail } from '../../../api/concertDetailApi';
+import { Box, Card, CardContent, Container, Grid } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { concertDetail } from "../../../api/concertDetailApi";
+import darkTheme from "../../../theme";
+import BookingForm from "./BookingForm";
+import ConcertDetail from "./ConcertDetail";
+import Confirmation from "./Confirmation";
+import Payment from "./Payment";
+import Result from "./Result";
+import StepsBar from "./StepsBar";
 
 const mockedConcertData = {
   success: true,
   errorMsg: null,
   data: {
     concertId: 4,
-    concertName: 'Concert D',
-    concertStartTime: '2023-12-04T21:00:00Z',
+    concertName: "Concert D",
+    concertStartTime: "2023-12-04T21:00:00Z",
     concertDuration: 2.0,
-    concertImage: 'imageD.jpg',
-    concertDescription: 'Concert D promises an evening of high-energy music and unforgettable moments.',
-    concertSaleTime: '2024-12-10T09:53:00Z',
+    concertImage: "imageD.jpg",
+    concertDescription:
+      "Concert D promises an evening of high-energy music and unforgettable moments.",
+    concertSaleTime: "2024-12-10T09:53:00Z",
     venueId: 4,
-    venueCountry: 'Australia',
-    venueCity: 'Sydney',
-    venueAddress: '101 George St',
-    venueImage: 'image4.jpg',
+    venueCountry: "Australia",
+    venueCity: "Sydney",
+    venueAddress: "101 George St",
+    venueImage: "image4.jpg",
     areas: [
       {
         id: 7,
         total: 130,
         available: 130,
         price: 65.0,
-        areaType: 'VIP',
+        areaType: "VIP",
       },
       {
         id: 8,
         total: 230,
         available: 230,
         price: 40.0,
-        areaType: 'General',
+        areaType: "General",
       },
     ],
   },
@@ -53,11 +54,11 @@ const BookingPage = () => {
   const [formData, setFormData] = useState({
     concertId: concert_id,
     audienceCount: 1,
-    areaPreferences: Array(mockedConcertData.data.areas.length).fill(''),
-    audienceDetails: Array(1).fill({ name: '', idCard: '' }),
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
+    areaPreferences: Array(mockedConcertData.data.areas.length).fill(""),
+    audienceDetails: Array(1).fill({ name: "", idCard: "" }),
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
   });
   const [bookingData, setBookingData] = useState(null);
   const [paymentResult, setPaymentResult] = useState(null);
@@ -94,7 +95,10 @@ const BookingPage = () => {
   useEffect(() => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      audienceDetails: Array(prevFormData.audienceCount).fill({ name: '', idCard: '' }),
+      audienceDetails: Array(prevFormData.audienceCount).fill({
+        name: "",
+        idCard: "",
+      }),
     }));
   }, [formData.audienceCount]);
 
@@ -104,7 +108,7 @@ const BookingPage = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box sx={{ backgroundColor: 'black', minHeight: '100vh', padding: 2 }}>
+      <Box sx={{ backgroundColor: "black", minHeight: "100vh", padding: 2 }}>
         <Container>
           <StepsBar activeStep={activeStep} handleBack={handleBack} />
           <Grid container spacing={2} sx={{ marginTop: 2 }}>
@@ -116,9 +120,29 @@ const BookingPage = () => {
               </Card>
             </Grid>
             <Grid item xs={12} md={6}>
-              {activeStep === 0 && <BookingForm formData={formData} handleChange={handleChange} handleNext={handleNext} concert={concert} />}
-              {activeStep === 1 && <Confirmation formData={formData} handleNext={handleNext} concert={concert} />}
-              {activeStep === 2 && <Payment formData={formData} handleChange={handleChange} handleNext={handleNext} bookingData={bookingData} />}
+              {activeStep === 0 && (
+                <BookingForm
+                  formData={formData}
+                  handleChange={handleChange}
+                  handleNext={handleNext}
+                  concert={concert}
+                />
+              )}
+              {activeStep === 1 && (
+                <Confirmation
+                  formData={formData}
+                  handleNext={handleNext}
+                  concert={concert}
+                />
+              )}
+              {activeStep === 2 && (
+                <Payment
+                  formData={formData}
+                  handleChange={handleChange}
+                  handleNext={handleNext}
+                  bookingData={bookingData}
+                />
+              )}
               {activeStep === 3 && <Result paymentResult={paymentResult} />}
             </Grid>
           </Grid>
