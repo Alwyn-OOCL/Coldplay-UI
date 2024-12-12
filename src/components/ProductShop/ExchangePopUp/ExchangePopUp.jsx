@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/AuthContext";
 import "./ExchangePopUp.css";
+import { exchange } from "../../../api/pages/exchangeApi";
+import baseApi from '../../../api/baseApi';
 
 export default function ExchangePopUp({
   selectedProducts,
@@ -11,9 +14,22 @@ export default function ExchangePopUp({
   const [products, setProducts] = useState(selectedProducts);
   const [success, setSuccess] = useState(false);
 
+  const [user, setUser] = useState(null);
+
   const navigate = useNavigate();
 
-  const userPoints = 100;
+  const { userId } = useAuth();
+
+  useEffect(() => {
+    if (userId) {
+      baseApi.get(`/user/${userId}`)
+      .then(response => {
+        setUser(response.data.data);
+      })
+      .finally(() => {
+      });
+    }
+  }, [userId]);
 
   // Function to group products by their ID and calculate the quantity
   const groupProducts = (products) => {
@@ -54,13 +70,17 @@ export default function ExchangePopUp({
     }
   };
 
-  const handleExchange = () => {
-    const storedUser = localStorage.getItem("userToken");
+  const handleExchange = async () => {
 
-    if (storedUser) {
-      setProducts([]);
-      updateSelectedProducts([]);
-      setSuccess(true);
+    const storedUserId = localStorage.getItem("userId");
+
+    if (storedUserId) {
+      exchange(storedUserId, totalPoints).then((response) => {
+        setUser({...user, point: response.data});
+        setProducts([]);
+        updateSelectedProducts([]);
+        setSuccess(true);
+      })
     } else {
       navigate(`/login`);
     }
@@ -115,7 +135,7 @@ export default function ExchangePopUp({
               </div>
               <div className="exchange-product-total">
                 <span>Your points:</span>
-                <span>{userPoints}</span>
+                <span>{user?.point}</span>
               </div>
             </>
           ) : (
@@ -123,17 +143,17 @@ export default function ExchangePopUp({
           )}
         </div>
         <div className="exchange-popup-footer">
-          {totalPoints > userPoints && (
+          {totalPoints > user?.point && (
             <div className="exchange-error-message">
               You do not have enough points to complete this exchange. (Only{" "}
-              {userPoints} points available)
+              {user?.point} points available)
             </div>
           )}
           {!success ? (
           <button
             className="exchange-popup-button"
             onClick={handleExchange}
-            disabled={totalPoints > userPoints}
+            disabled={totalPoints > user?.point}
           >
             Exchange
           </button>) : <></>}
