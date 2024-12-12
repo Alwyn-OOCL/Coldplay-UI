@@ -11,7 +11,7 @@ export default function ConcertItem({ concert }) {
     minute: "2-digit",
   });
   const today = new Date();
-  const isUpcoming = date > today;
+  const isUpcoming = new Date(concert.concertSaleTime) > today;
 
   const ticketPrices = concert.areas
     ? concert.areas.map((a) => `${a.areaType}: $${a.price}`)

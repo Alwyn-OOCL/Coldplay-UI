@@ -98,6 +98,9 @@ export default function Navbar() {
           <a href="/shop" className="nav-link">
             Shop
           </a>
+          <a href="/promotions" className="nav-link">
+            Promotion
+          </a>
         </div>
         <div className="navbar-auth">
           {user ? (
