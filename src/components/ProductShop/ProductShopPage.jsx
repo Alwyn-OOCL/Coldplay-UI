@@ -31,9 +31,15 @@ export default function ProductShopPage() {
   };
 
   const handleRemoveFromCart = (product) => {
-    setSelectedProducts((prevProducts) =>
-      prevProducts.filter((item) => item.productId !== product.productId)
-    );
+    setSelectedProducts((prevProducts) => {
+      const index = prevProducts.findIndex((item) => item.productId === product.productId);
+      if (index !== -1) {
+        const newProducts = [...prevProducts];
+        newProducts.splice(index, 1);
+        return newProducts;
+      }
+      return prevProducts;
+    });
   };
 
   const handleSearchChange = (e) => {
