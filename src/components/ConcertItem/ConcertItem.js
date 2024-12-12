@@ -10,6 +10,8 @@ export default function ConcertItem({ concert }) {
     hour: "2-digit",
     minute: "2-digit",
   });
+  const today = new Date();
+  const isUpcoming = date > today;
 
   const ticketPrices = concert.areas
     ? concert.areas.map((a) => `${a.areaType}: $${a.price}`)
@@ -23,7 +25,9 @@ export default function ConcertItem({ concert }) {
         className="concert-image"
       />
       <div className="concert-details">
-        <h2>{concert.concertName}</h2>
+        <h2>
+          {isUpcoming ? <span>{concert.concertName} <span style={{ color: "red" }}>(Sales Not Started)</span></span> : concert.concertName}
+        </h2>
         <p>
           <strong>Date:</strong> {dateString}
         </p>
