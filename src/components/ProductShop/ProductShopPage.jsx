@@ -19,7 +19,7 @@ export default function ProductShopPage() {
 
   const toggleSortOrder = () => {
     setSortOrder((prevSortOrder) =>
-      prevSortOrder === "desc" ? "asc" : "desc",
+      prevSortOrder === "desc" ? "asc" : "desc"
     );
   };
 
@@ -31,9 +31,15 @@ export default function ProductShopPage() {
   };
 
   const handleRemoveFromCart = (product) => {
-    setSelectedProducts((prevProducts) =>
-      prevProducts.filter((item) => item.productId !== product.productId),
-    );
+    setSelectedProducts((prevProducts) => {
+      const index = prevProducts.findIndex((item) => item.productId === product.productId);
+      if (index !== -1) {
+        const newProducts = [...prevProducts];
+        newProducts.splice(index, 1);
+        return newProducts;
+      }
+      return prevProducts;
+    });
   };
 
   const handleSearchChange = (e) => {
@@ -50,6 +56,7 @@ export default function ProductShopPage() {
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
+    window.location.reload();
   };
 
   const filteredProducts = products.filter((product) => {
@@ -73,7 +80,7 @@ export default function ProductShopPage() {
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   const currentProducts = sortedProducts.slice(
     indexOfFirstProduct,
-    indexOfLastProduct,
+    indexOfLastProduct
   );
 
   return (

@@ -1,11 +1,11 @@
-import { Box, Button, Step, StepLabel, Stepper } from "@mui/material";
-import React from "react";
+import { Box, Button, Step, StepLabel, Stepper } from '@mui/material';
+import React from 'react';
 
 const StepsBar = ({ activeStep, handleBack }) => {
-  const steps = ["Booking Form", "Confirmation", "Payment", "Result"];
+  const steps = ['Booking Form', 'Confirmation', 'Payment', 'Result'];
 
   return (
-    <Box sx={{ width: "100%", marginBottom: 2 }}>
+    <Box sx={{ width: '100%', marginBottom: 2 }}>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label}>

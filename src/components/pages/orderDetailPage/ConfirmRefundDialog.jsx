@@ -1,12 +1,5 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@mui/material";
-import React from "react";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import React from 'react';
 
 const ConfirmRefundDialog = ({ open, onClose, onConfirm }) => {
   return (
@@ -14,8 +7,7 @@ const ConfirmRefundDialog = ({ open, onClose, onConfirm }) => {
       <DialogTitle>Confirm Refund</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          This action is irreversible. Once you confirm the refund, the payment
-          will be refunded within a few days.
+          This action is irreversible. Once you confirm the refund, the payment will be refunded within a few days.
         </DialogContentText>
       </DialogContent>
       <DialogActions>

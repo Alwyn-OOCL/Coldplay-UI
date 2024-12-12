@@ -1,5 +1,5 @@
-import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
+import { Box, Grid, Typography } from '@mui/material';
+import React from 'react';
 
 const ConcertDetail = ({ concert }) => {
   return (
@@ -10,15 +10,13 @@ const ConcertDetail = ({ concert }) => {
             {concert.concertName}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            <strong>Start Time:</strong>{" "}
-            {new Date(concert.concertStartTime).toLocaleString()}
+            <strong>Start Time:</strong> {new Date(concert.concertStartTime).toLocaleString()}
           </Typography>
           <Typography variant="body1" gutterBottom>
             <strong>Duration:</strong> {concert.concertDuration} hours
           </Typography>
           <Typography variant="body1" gutterBottom>
-            <strong>Venue:</strong> {concert.venueAddress}, {concert.venueCity},{" "}
-            {concert.venueCountry}
+            <strong>Venue:</strong> {concert.venueAddress}, {concert.venueCity}, {concert.venueCountry}
           </Typography>
           <Typography variant="body1" gutterBottom>
             <strong>Description:</strong> {concert.concertDescription}
@@ -32,7 +30,7 @@ const ConcertDetail = ({ concert }) => {
         <img
           src={concert.venueImage}
           alt="Sitting Plan"
-          style={{ width: "100%", height: "auto", marginTop: "20px" }}
+          style={{ width: '100%', height: 'auto', marginTop: '20px' }}
         />
       </Grid>
       <Grid item xs={12}>

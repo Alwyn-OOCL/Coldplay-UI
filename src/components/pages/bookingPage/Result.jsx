@@ -1,23 +1,28 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import {
+    Box,
+    Card,
+    CardContent,
+    Typography
+} from '@mui/material';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Result = ({ paymentResult }) => {
   const navigate = useNavigate();
 
   const handleHomeRedirect = () => {
-    navigate("/");
+    navigate('/');
   };
 
   const handleMyBookingRedirect = () => {
-    navigate("/my-booking");
+    navigate('/my-booking');
   };
 
   return (
     <Card>
       <CardContent>
         <Typography variant="h5" component="div" gutterBottom>
-          {paymentResult.success ? "Booking Successful" : "Booking Failed"}
+          {paymentResult.success ? 'Booking Successful' : 'Booking Failed'}
         </Typography>
         {paymentResult.success ? (
           <>
@@ -32,21 +37,15 @@ const Result = ({ paymentResult }) => {
         )}
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-around",
+            display: 'flex',
+            justifyContent: 'space-around',
             marginTop: 2,
           }}
         >
-          <button
-            className="button button-primary"
-            onClick={handleHomeRedirect}
-          >
+          <button className="button button-primary" onClick={handleHomeRedirect}>
             Home
           </button>
-          <button
-            className="button button-secondary"
-            onClick={handleMyBookingRedirect}
-          >
+          <button className="button button-secondary" onClick={handleMyBookingRedirect}>
             View my booking
           </button>
         </Box>

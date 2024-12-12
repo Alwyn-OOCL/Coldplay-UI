@@ -1,14 +1,11 @@
-import { Box, TextField, Typography } from "@mui/material";
-import React from "react";
+import { Box, TextField, Typography } from '@mui/material';
+import React from 'react';
 
 const AudienceInfo = ({ audienceDetails, handleChange, errors, setErrors }) => {
   return (
     <>
       {audienceDetails.map((audience, index) => (
-        <Box
-          key={index}
-          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-        >
+        <Box key={index} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Typography variant="h6" component="div" gutterBottom>
             Audience {index + 1}
           </Typography>
@@ -16,16 +13,11 @@ const AudienceInfo = ({ audienceDetails, handleChange, errors, setErrors }) => {
             label="Name"
             variant="outlined"
             fullWidth
-            value={audience.name || ""}
+            value={audience.name || ''}
             onChange={(event) => {
               const newDetails = [...audienceDetails];
-              newDetails[index] = {
-                ...newDetails[index],
-                name: event.target.value,
-              };
-              handleChange("audienceDetails")({
-                target: { value: newDetails },
-              });
+              newDetails[index] = { ...newDetails[index], name: event.target.value };
+              handleChange('audienceDetails')({ target: { value: newDetails } });
               setErrors((prevErrors) => {
                 const newErrors = { ...prevErrors };
                 delete newErrors[`audienceName${index}`];
@@ -40,16 +32,11 @@ const AudienceInfo = ({ audienceDetails, handleChange, errors, setErrors }) => {
             label="ID Card Number"
             variant="outlined"
             fullWidth
-            value={audience.idCard || ""}
+            value={audience.idCard || ''}
             onChange={(event) => {
               const newDetails = [...audienceDetails];
-              newDetails[index] = {
-                ...newDetails[index],
-                idCard: event.target.value,
-              };
-              handleChange("audienceDetails")({
-                target: { value: newDetails },
-              });
+              newDetails[index] = { ...newDetails[index], idCard: event.target.value };
+              handleChange('audienceDetails')({ target: { value: newDetails } });
               setErrors((prevErrors) => {
                 const newErrors = { ...prevErrors };
                 delete newErrors[`audienceIdCard${index}`];
