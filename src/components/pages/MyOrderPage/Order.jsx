@@ -35,7 +35,7 @@ const Order = ({ order }) => {
             {order.country}, {order.city}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="div">
-            Area: {order.area_type}
+            Area: {order.areaType}
           </Typography>
         </CardContent>
       </Box>

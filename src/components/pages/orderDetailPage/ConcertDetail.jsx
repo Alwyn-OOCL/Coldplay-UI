@@ -4,7 +4,7 @@ import React from 'react';
 const ConcertDetail = ({ orderDetail, totalAmount }) => {
   return (
     <Box sx={{ display: 'flex', gap: 2, marginBottom: 2 }}>
-      <Card sx={{ width: 300 }}>
+      <Card sx={{ width: "40%" , justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
         <CardMedia
           component="img"
           image={orderDetail.image}
