@@ -40,7 +40,12 @@ const PromotionConfirm = (props) => {
     }
     handleConfirmRedeem();
     charity(code).then((response) => {
-      setSuccess(true)
+      if (response.success) {
+        setSuccess(true)
+      }
+      else {
+        setError(response.errorMsg)
+      }
     });
   };
 
