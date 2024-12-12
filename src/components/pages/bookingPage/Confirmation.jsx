@@ -13,7 +13,6 @@ const Confirmation = ({ formData, handleNext, concert }) => {
         concertId: formData.concertId,
         audienceCount: formData.audienceCount,
         areaPreferences: formData.areaPreferences.filter(preference => preference !== 'noChoose'),
-        audienceDetails: formData.audienceDetails,
       });
       if (response.data.success) {
         handleNext(response.data.data);

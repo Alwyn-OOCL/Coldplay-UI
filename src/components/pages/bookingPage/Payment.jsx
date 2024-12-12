@@ -77,6 +77,7 @@ const Payment = ({
           cvv: formData.cvv,
           amount: bookingData.amount,
           totalPrice: bookingData.price * bookingData.amount,
+          audienceDetails: formData.audienceDetails,
         };
         const response = await makePayment(bookingData.orderId, paymentData);
         handleNext(response.data);

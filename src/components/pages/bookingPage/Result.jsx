@@ -15,7 +15,7 @@ const Result = ({ paymentResult }) => {
   };
 
   const handleMyBookingRedirect = () => {
-    navigate('/my-booking');
+    navigate('/my-orders');
   };
 
   return (

@@ -11,40 +11,6 @@ import Payment from './Payment';
 import Result from './Result';
 import StepsBar from './StepsBar';
 
-const mockedConcertData = {
-  success: true,
-  errorMsg: null,
-  data: {
-    concertId: 4,
-    concertName: 'Concert D',
-    concertStartTime: '2023-12-04T21:00:00Z',
-    concertDuration: 2.0,
-    concertImage: 'imageD.jpg',
-    concertDescription: 'Concert D promises an evening of high-energy music and unforgettable moments.',
-    concertSaleTime: '2024-12-10T09:53:00Z',
-    venueId: 4,
-    venueCountry: 'Australia',
-    venueCity: 'Sydney',
-    venueAddress: '101 George St',
-    venueImage: 'image4.jpg',
-    areas: [
-      {
-        id: 7,
-        total: 130,
-        available: 130,
-        price: 65.0,
-        areaType: 'VIP',
-      },
-      {
-        id: 8,
-        total: 230,
-        available: 230,
-        price: 40.0,
-        areaType: 'General',
-      },
-    ],
-  },
-};
 
 const BookingPage = () => {
   const { concert_id } = useParams();
@@ -53,7 +19,7 @@ const BookingPage = () => {
   const [formData, setFormData] = useState({
     concertId: concert_id,
     audienceCount: 1,
-    areaPreferences: Array(mockedConcertData.data.areas.length).fill(''),
+    areaPreferences: Array(1).fill(''),
     audienceDetails: Array(1).fill({ name: '', idCard: '' }),
     cardNumber: '',
     expiryDate: '',
@@ -67,9 +33,12 @@ const BookingPage = () => {
     concertDetail(concert_id).then((response) => {
       if (response.success) {
         setConcert(response.data);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          areaPreferences: Array(response.data.areas.length).fill(''),
+        }));
       }
     });
-    // setConcert(mockedConcertData.data);
   }, [concert_id]);
 
   const handleNext = (data) => {
@@ -94,7 +63,7 @@ const BookingPage = () => {
   useEffect(() => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      audienceDetails: Array(prevFormData.audienceCount).fill({ name: '', idCard: '' }),
+      audienceDetails: Array(parseInt(prevFormData.audienceCount)).fill({ name: '', idCard: '' }),
     }));
   }, [formData.audienceCount]);
 
