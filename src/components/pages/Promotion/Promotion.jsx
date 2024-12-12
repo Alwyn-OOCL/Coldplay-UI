@@ -1,21 +1,17 @@
-import React, {
-  useState,
-  useEffect
-} from 'react';
-import {useNavigate} from 'react-router-dom';
-import './Promotion.css';
-import baseApi from '../../../api/baseApi';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Promotion.css";
+import baseApi from "../../../api/baseApi";
+import { charity } from "../../../data/charity";
+import PromotionConfirm from "./PromotionConfirm";
 
-const Promotion = ({
-                     promoMessage,
-                     promoDescription
-                   }) => {
+const Promotion = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
   const [isRedeemed, setIsRedeemed] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
@@ -44,89 +40,84 @@ const Promotion = ({
 
   const handleConfirmRedeem = async () => {
     try {
-      const response = await baseApi.post('/code/validation', {code});
+      const response = await baseApi.post("/code/validation", { code });
       if (response.data.success) {
-        setAlertMessage('Redemption successful!');
+        setAlertMessage("Redemption successful!");
         setIsRedeemed(true);
         setIsError(false);
-      }
-      else {
+      } else {
         setAlertMessage(response.data.errorMsg);
         setIsError(true);
       }
-    }
-    catch (error) {
-      setAlertMessage('Failed to redeem promotion.');
+    } catch (error) {
+      setAlertMessage("Failed to redeem promotion.");
       setIsError(true);
     }
   };
 
   const handleCloseAlert = () => {
     setShowAlert(false);
-    navigate('/');
   };
 
   return (
-    <div className='promotion'>
-      <h2 className='promotion-main-title'>Recently organized charity activities</h2>
-      <div className='promotion-images'>
-        {[
-          0,
-          1,
-          2,
-          3
-        ].map((index) => (
+    <div className="promotion">
+      <h2 className="promotion-main-title">
+        Recent organized charity activities
+      </h2>
+      <div className="promotion-images">
+        {charity.map((item, index) => (
           <div
-            key={index}
-            className={`promotion-image-item ${currentIndex === index ? 'active' : ''}`}
+            key={item}
+            className={`promotion-image-item ${
+              currentIndex === index ? "active" : ""
+            }`}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           >
-            <img src={require(`../../../assets/images/homeposter.png`)} className='promotion-image' alt='Promotion'/>
-            <p className='promotion-description'>{index + 1}</p>
+            <img
+              src={require(`../../../assets/images/promotion/${item.img}`)}
+              className="promotion-image"
+              alt="Promotion"
+            />
+            <p className="promotion-description">{item.charity_description}</p>
           </div>
         ))}
       </div>
-      <div className='promotion-lower'>
-        <div className='promo-message'>
-          <p>111{promoMessage}</p>
-          <p className='promo-description'>{promoDescription}</p>
-        </div>
-
-      </div>
-      <div className='redemption-box'>
-        <input
-          type='text'
-          placeholder='Enter Redemption code'
-          className='redemption-input'
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-        />
-        <button className='redeem-button' onClick={handleRedeem}>
-          Redeem
-        </button>
-      </div>
-      {showAlert && (
-        <div className='alert-box'>
-          <div className='alert-content'>
-            <div className='alert-header'>
-            <h3>
-              Confirm your Redemption code
-            </h3>
-            <button className="alert-close" >
-              &times;
-            </button>
-            </div>
-            {!isRedeemed && (
-              <button className='confirm-button' onClick={handleConfirmRedeem}>
-                Confirm
-              </button>
-            )}
-            <button className='close-button' onClick={handleCloseAlert}>
-              Close
+      <div className="promotion-lower-container">
+        <div className="promotion-lower">
+          <div className="promo-message">
+            <p>
+              Every bit of love can be transformed into a journey of Coldplay's
+              music. Participate in charity activities and let love and music
+              coexist
+            </p>
+          </div>
+          <div className="redemption-box">
+            <input
+              type="text"
+              placeholder="Enter Redemption code"
+              className="redemption-input"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+            <button
+              className="redeem-button"
+              onClick={handleRedeem}
+              disabled={!code || code === ""}
+            >
+              Redeem Now!
             </button>
           </div>
         </div>
+      </div>
+
+      {showAlert && (
+        <PromotionConfirm
+          isRedeemed={isRedeemed}
+          code={code}
+          onCloseAlert={handleCloseAlert}
+          setCode={setCode}
+        />
       )}
     </div>
   );
