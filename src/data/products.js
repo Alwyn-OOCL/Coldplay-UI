@@ -36,7 +36,7 @@ const products = [
     productName: "Fan Keychain",
     productImage: "keychain.jpg",
     points: 5,
-    category: "Accessories",
+    category: "Decor",
     description: "A durable keychain to show your fandom.",
   },
   {
