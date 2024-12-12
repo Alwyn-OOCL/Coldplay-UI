@@ -1,6 +1,6 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import './NewsSectionGroup.css';
+import React from "react";
+import { useLocation } from "react-router-dom";
+import "./NewsSectionGroup.css";
 
 const NewSectionDetail = () => {
   const location = useLocation();

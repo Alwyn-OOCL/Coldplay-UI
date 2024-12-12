@@ -59,7 +59,7 @@
 
 .user-level {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   color: #e57373;
   margin-right: 5px; /* Add a small gap */
 }
@@ -79,4 +79,33 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user-level, .user-name, .user-point {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user-level span, .user-name span, .user-point span {
+  margin-right: 5px;
+}
+
+.user-level span:first-child, .user-name span:first-child, .user-point span:first-child {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.user-level span:last-child, .user-name span:last-child, .user-point span:last-child {
+  color: var(--text-light);
+  background-color: var(--background-dark);
+  padding: 2px 6px;
+  border-radius: 4px;
 }

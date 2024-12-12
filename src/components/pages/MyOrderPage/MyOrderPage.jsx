@@ -21,7 +21,7 @@ const MyOrderPage = () => {
           if (response.data.success) {
             const fetchedOrders = response.data.data || [];
             const sortedOrders = fetchedOrders.sort(
-              (a, b) => new Date(b.startTime) - new Date(a.startTime)
+              (a, b) => new Date(b.startTime) - new Date(a.startTime),
             );
             setOrders(sortedOrders);
             setFilteredOrders(sortedOrders);
@@ -42,7 +42,7 @@ const MyOrderPage = () => {
     setSelectedYear(year);
     if (year) {
       const filtered = orders.filter(
-        (order) => new Date(order.startTime).getFullYear().toString() === year
+        (order) => new Date(order.startTime).getFullYear().toString() === year,
       );
       setFilteredOrders(filtered);
     } else {
@@ -67,8 +67,8 @@ const MyOrderPage = () => {
     ? [
         ...new Set(
           orders.map((order) =>
-            new Date(order.startTime).getFullYear().toString()
-          )
+            new Date(order.startTime).getFullYear().toString(),
+          ),
         ),
       ]
     : [];
@@ -80,7 +80,7 @@ const MyOrderPage = () => {
       </Typography>
       {orders.length === 0 ? (
         <>
-          <Typography variant="body1" color="textSecondary">
+          <Typography variant="h5" color="textSecondary" align="center">
             You have no orders. Book a concert now!
           </Typography>
           <HomePoster />

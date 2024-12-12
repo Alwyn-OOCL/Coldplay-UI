@@ -51,7 +51,7 @@ export default function ConcertDetail() {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
-                    }
+                    },
                   )}
               </p>
               <p>
@@ -61,7 +61,7 @@ export default function ConcertDetail() {
                   {
                     hour: "numeric",
                     minute: "numeric",
-                  }
+                  },
                 )}
                 {" - "}
                 Duration: {concert?.concertDuration} hours
