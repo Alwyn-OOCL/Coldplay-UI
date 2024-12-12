@@ -63,7 +63,7 @@
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  width: 150px; /* Increased width */
+  width: 180px; /* Increased width */
 }
 
 .user-info:hover .user-dropdown {

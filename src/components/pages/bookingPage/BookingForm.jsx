@@ -44,11 +44,11 @@ const BookingForm = ({ formData, handleChange, handleNext, concert }) => {
   }, [concert.concertSaleTime, isSaleTimeReached]);
 
   useEffect(() => {
-    const noChooseIndex = formData.areaPreferences.indexOf("noChoose");
-    if (noChooseIndex !== -1) {
+    const noPreferenceIndex = formData.areaPreferences.indexOf("noPreference");
+    if (noPreferenceIndex !== -1) {
       setErrors((prevErrors) => {
         const newErrors = { ...prevErrors };
-        for (let i = noChooseIndex; i < formData.areaPreferences.length; i++) {
+        for (let i = noPreferenceIndex; i < formData.areaPreferences.length; i++) {
           delete newErrors[`areaPreference${i}`];
         }
         return newErrors;
@@ -64,10 +64,10 @@ const BookingForm = ({ formData, handleChange, handleNext, concert }) => {
       (option) => !selectedOptions.includes(option.id)
     );
     if (index > 0) {
-      availableOptions.unshift({ id: "noChoose", name: "No Choose" });
+      availableOptions.unshift({ id: "noPreference", name: "No Preference" });
     }
-    if (index > 0 && formData.areaPreferences[index - 1] === "noChoose") {
-      return [{ id: "noChoose", name: "No Choose" }];
+    if (index > 0 && formData.areaPreferences[index - 1] === "noPreference") {
+      return [{ id: "noPreference", name: "No Preference" }];
     }
     return availableOptions;
   };
@@ -75,9 +75,9 @@ const BookingForm = ({ formData, handleChange, handleNext, concert }) => {
   const handleAreaChange = (index) => (event) => {
     const newPreferences = [...formData.areaPreferences];
     newPreferences[index] = event.target.value;
-    if (event.target.value === "noChoose") {
+    if (event.target.value === "noPreference") {
       for (let i = index + 1; i < newPreferences.length; i++) {
-        newPreferences[i] = "noChoose";
+        newPreferences[i] = "noPreference";
       }
     }
     handleChange("areaPreferences")({ target: { value: newPreferences } });
@@ -93,12 +93,12 @@ const BookingForm = ({ formData, handleChange, handleNext, concert }) => {
     if (!formData.audienceCount) {
       newErrors.audienceCount = "Number of audience is required";
     }
-    let noChooseFound = false;
+    let noPreferenceFound = false;
     formData.areaPreferences.forEach((preference, index) => {
-      if (preference === "noChoose") {
-        noChooseFound = true;
+      if (preference === "noPreference") {
+        noPreferenceFound = true;
       }
-      if (!preference && !noChooseFound) {
+      if (!preference && !noPreferenceFound) {
         newErrors[`areaPreference${index}`] = `Priority ${index + 1} is required`;
       }
     });

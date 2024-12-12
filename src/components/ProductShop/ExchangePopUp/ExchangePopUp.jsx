@@ -138,7 +138,7 @@ export default function ExchangePopUp({
               </div>
               <div className="exchange-product-total">
                 <span>Charity</span>
-                <span>${parseInt(totalPoints) * 10}</span>
+                <span>${parseInt(totalPoints) * 1}</span>
               </div>
               <span className="exchange-charity-msg">
                 ** 1pt = $1 to charity
