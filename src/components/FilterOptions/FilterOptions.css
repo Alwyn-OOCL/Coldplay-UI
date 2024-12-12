@@ -14,8 +14,17 @@
 }
 
 .filter-options button {
-  padding: 8px 16px;
-  background-color: var(--primary-color);
+  padding: 8px 8px;
+  background-color: #1a1a1a;
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-options-clear-all {
+  padding: 8px 8px;
+  background-color: var(--primary-color) !important;
   color: var(--text-light);
   border: none;
   border-radius: 4px;

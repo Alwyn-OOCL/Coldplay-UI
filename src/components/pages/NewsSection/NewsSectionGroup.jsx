@@ -1,10 +1,10 @@
 import React, {
-  useEffect,
-  useState
+    useEffect,
+    useState
 } from 'react';
 import baseApi from '../../../api/baseApi';
-import NewsSectionItem from './NewsSectionItem';
 import './NewsSectionGroup.css';
+import NewsSectionItem from './NewsSectionItem';
 
 export default function NewsSectionGroup () {
   const [newsItems, setNewsItems] = useState([]);
@@ -24,7 +24,7 @@ export default function NewsSectionGroup () {
     <section className='news-section'>
       <div className='container'>
         <div className='news-section-inner'>
-          <h2 className='section-title'>News Sections</h2>
+          <h2 className='section-title'>News Section</h2>
           <div className='news-list'>
             {newsItems.map(item => (
               <NewsSectionItem key={item.id} newsection={item}/>

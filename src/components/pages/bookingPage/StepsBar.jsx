@@ -1,5 +1,5 @@
+import { Box, Button, Step, StepLabel, Stepper } from '@mui/material';
 import React from 'react';
-import { Stepper, Step, StepLabel, Button, Box } from '@mui/material';
 
 const StepsBar = ({ activeStep, handleBack }) => {
   const steps = ['Booking Form', 'Confirmation', 'Payment', 'Result'];

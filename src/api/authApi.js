@@ -1,13 +1,13 @@
 import baseApi from "./baseApi";
 
 export const login = async (credential, password) => {
-    try {
-        const response = await baseApi.post('/login', { credential, password });
-        return response.data;
-    } catch (error) {
-        console.error('Login error:', error);
-        throw error;
-    }
+  try {
+    const response = await baseApi.post("/login", { credential, password });
+    return response.data;
+  } catch (error) {
+    console.error("Login error:", error);
+    throw error;
+  }
 };
 
 export const register = async (userData) => {

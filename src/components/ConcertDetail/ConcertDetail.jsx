@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./ConcertDetail.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { concertDetail } from "../../api/concertDetailApi";
-import { useNavigate } from "react-router-dom";
+import "./ConcertDetail.css";
 
 export default function ConcertDetail() {
   const { concert_id } = useParams();
@@ -10,6 +9,7 @@ export default function ConcertDetail() {
   const [concert, setConcert] = useState(null);
 
   const saleTime = new Date(concert?.concertSaleTime);
+  const startTime = new Date(concert?.concertStartTime);
   const buttonLabel = new Date() < saleTime ? "Book Now!" : "Buy Now!";
 
   const handlePurchaseTicket = () => {
@@ -110,26 +110,28 @@ export default function ConcertDetail() {
             />
           </div>
 
-          <div className="purchase-section">
-            <p>
-              Sale Starts:{" "}
-              {new Date(concert?.concertSaleTime).toLocaleTimeString("en-US", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
-            <button
-              className="button button-primary purchase-button"
-              onClick={handlePurchaseTicket}
-            >
-              {buttonLabel}
-            </button>
-            <p className="terms">
-              By purchasing tickets you agree to our terms and conditions
-            </p>
-          </div>
+          {new Date() < startTime && (
+            <div className="purchase-section">
+              <p>
+                Sale Starts:{" "}
+                {new Date(concert?.concertSaleTime).toLocaleTimeString("en-US", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+              <button
+                className="button button-primary purchase-button"
+                onClick={handlePurchaseTicket}
+              >
+                {buttonLabel}
+              </button>
+              <p className="terms">
+                By purchasing tickets you agree to our terms and conditions
+              </p>
+            </div>
+          )}
         </div>
       </main>
     </div>

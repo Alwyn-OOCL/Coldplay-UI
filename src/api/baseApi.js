@@ -18,7 +18,7 @@ baseApi.interceptors.request.use(
   (error) => {
     // Handle the request error
     return Promise.reject(error);
-  }
+  },
 );
 
 // Add a response interceptor
@@ -40,7 +40,7 @@ baseApi.interceptors.response.use(
 
     console.error("Response Error:", error);
     return Promise.reject(error);
-  }
+  },
 );
 
 export default baseApi;

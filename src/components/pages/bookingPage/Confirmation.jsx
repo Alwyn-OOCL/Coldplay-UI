@@ -1,5 +1,5 @@
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, Box } from '@mui/material';
 import { submitBooking } from '../../../api/pages/bookingPage/bookingApi';
 import Loading from '../bookingPage/Loading';
 
@@ -12,8 +12,7 @@ const Confirmation = ({ formData, handleNext, concert }) => {
       const response = await submitBooking({
         concertId: formData.concertId,
         audienceCount: formData.audienceCount,
-        areaPreferences: formData.areaPreferences.filter(preference => preference !== 'noChoose'),
-        audienceDetails: formData.audienceDetails,
+        areaPreferences: formData.areaPreferences.filter(preference => preference !== 'noPreference'),
       });
       if (response.data.success) {
         handleNext(response.data.data);
@@ -30,7 +29,7 @@ const Confirmation = ({ formData, handleNext, concert }) => {
 
   const getAreaType = (areaId) => {
     const area = concert.areas.find((area) => area.id === areaId);
-    return area ? area.areaType : 'No Choose';
+    return area ? area.areaType : 'No Preference';
   };
 
   if (loading) {
@@ -52,7 +51,7 @@ const Confirmation = ({ formData, handleNext, concert }) => {
           </Typography>
           <Box sx={{ pl: 2 }}>
             {formData.areaPreferences
-              .filter(preference => preference !== 'noChoose')
+              .filter(preference => preference !== 'noPreference')
               .map((preference, index) => (
                 <Typography key={index} variant="body2" gutterBottom>
                   <strong>Priority {index + 1}:</strong> {getAreaType(preference)}

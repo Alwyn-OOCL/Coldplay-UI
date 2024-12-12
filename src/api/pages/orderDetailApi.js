@@ -11,11 +11,11 @@ export const getOrderDetail = async (orderId) => {
 };
 
 export const refundTicket = async (ticketId) => {
-    try {
-      const response = await baseApi.put(`/tickets/${ticketId}`);
-      return response;
-    } catch (error) {
-      console.error("Error refunding ticket:", error);
-      throw error;
-    }
-  };
+  try {
+    const response = await baseApi.put(`/tickets/${ticketId}`);
+    return response;
+  } catch (error) {
+    console.error("Error refunding ticket:", error);
+    throw error;
+  }
+};

@@ -7,18 +7,25 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className='footer-links'>
-            <h3>Coldplay World Tour</h3>
-            {/*todo dont use https://www.coldplay.com/ Victor*/}
-            <a href='https://www.coldplay.com/' className='social-link'>Coldplay</a>
-          </div>
-          <div className='footer-links'>
             <h3>Social</h3>
-            <a href='https://m.weibo.cn/u/7502254158?t=0&luicode=10000011&lfid=231583' className='social-link'>Micro-blog</a>
+            <div className='social-icons'>
+              <a href="https://m.weibo.cn/p/index?containerid=100808aa968850a9d255494612acd0552f8fcd&extparam=Coldplay" target="_blank" rel="noopener noreferrer">
+                <img src={require('../../assets/images/icon/Weibo.png')} alt='Weibo' className='social-icon'/>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src={require('../../assets/images/icon/ins.png')} alt='Instagram' className='social-icon'/>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <img src={require('../../assets/images/icon/Twitter.png')} alt='Twitter' className='social-icon'/>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <img src={require('../../assets/images/icon/Youtube.png')} alt='YouTube' className='social-icon'/>
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src={require('../../assets/images/icon/facebook.png')} alt='Facebook' className='social-icon'/>
+              </a>
+            </div>
           </div>
-          {/*<div className="footer-links">*/}
-          {/*  <h3>FAQs</h3>*/}
-          {/*  <a href="#" className='social-link'>Support</a>*/}
-          {/*</div>*/}
         </div>
       </div>
     </footer>

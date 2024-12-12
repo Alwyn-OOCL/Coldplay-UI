@@ -1,11 +1,11 @@
-import React from 'react';
 import {
-  Box,
-  Card,
-  CardContent,
-  Typography
+    Box,
+    Card,
+    CardContent,
+    Typography
 } from '@mui/material';
-import {useNavigate} from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Result = ({ paymentResult }) => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Result = ({ paymentResult }) => {
   };
 
   const handleMyBookingRedirect = () => {
-    navigate('/my-booking');
+    navigate('/my-orders');
   };
 
   return (

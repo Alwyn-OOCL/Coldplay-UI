@@ -123,11 +123,9 @@
 }
 
 .seat-map-image {
-  /* max-width: 100%; */
-  width: 600px;
-  height: 400px;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
-  /* height: auto; */
   margin-top: 24px;
   border-radius: 8px;
 }

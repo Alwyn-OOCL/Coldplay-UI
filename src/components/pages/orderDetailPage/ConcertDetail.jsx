@@ -1,10 +1,10 @@
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
-import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
 
 const ConcertDetail = ({ orderDetail, totalAmount }) => {
   return (
     <Box sx={{ display: 'flex', gap: 2, marginBottom: 2 }}>
-      <Card sx={{ width: 300 }}>
+      <Card sx={{ width: "40%" , justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
         <CardMedia
           component="img"
           image={orderDetail.image}

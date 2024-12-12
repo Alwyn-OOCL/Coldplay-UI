@@ -6,6 +6,7 @@ import HomePoster from "../HomePoster/HomePoster";
 import Order from "./Order";
 import SortOrder from "./SortOrder";
 import YearFilter from "./YearFilter";
+import { useNavigate } from "react-router-dom";
 
 const MyOrderPage = () => {
   const [orders, setOrders] = useState([]);
@@ -13,36 +14,42 @@ const MyOrderPage = () => {
   const [selectedYear, setSelectedYear] = useState("");
   const [sortOrder, setSortOrder] = useState("desc");
   const { userId } = useAuth();
+  const navigate = useNavigate();
+  const storedUser = localStorage.getItem("userToken");
 
   useEffect(() => {
-    if (userId) {
-      getOrders(userId)
-        .then((response) => {
-          if (response.data.success) {
-            const fetchedOrders = response.data.data || [];
-            const sortedOrders = fetchedOrders.sort(
-              (a, b) => new Date(b.startTime) - new Date(a.startTime)
-            );
-            setOrders(sortedOrders);
-            setFilteredOrders(sortedOrders);
-          } else {
+    if (!storedUser) {
+      navigate(`/login`);
+    } else {
+      if (userId) {
+        getOrders(userId)
+          .then((response) => {
+            if (response.data.success) {
+              const fetchedOrders = response.data.data || [];
+              const sortedOrders = fetchedOrders.sort(
+                (a, b) => new Date(b.startTime) - new Date(a.startTime)
+              );
+              setOrders(sortedOrders);
+              setFilteredOrders(sortedOrders);
+            } else {
+              setOrders([]);
+              setFilteredOrders([]);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching orders:", error);
             setOrders([]);
             setFilteredOrders([]);
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching orders:", error);
-          setOrders([]);
-          setFilteredOrders([]);
-        });
+          });
+      }
     }
-  }, [userId]);
+  }, [userId,navigate,storedUser]);
 
   const handleYearFilter = (year) => {
     setSelectedYear(year);
     if (year) {
       const filtered = orders.filter(
-        (order) => new Date(order.startTime).getFullYear().toString() === year
+        (order) => new Date(order.startTime).getFullYear().toString() === year,
       );
       setFilteredOrders(filtered);
     } else {
@@ -67,8 +74,8 @@ const MyOrderPage = () => {
     ? [
         ...new Set(
           orders.map((order) =>
-            new Date(order.startTime).getFullYear().toString()
-          )
+            new Date(order.startTime).getFullYear().toString(),
+          ),
         ),
       ]
     : [];
@@ -80,7 +87,7 @@ const MyOrderPage = () => {
       </Typography>
       {orders.length === 0 ? (
         <>
-          <Typography variant="body1" color="textSecondary">
+          <Typography variant="h5" color="textSecondary" align="center">
             You have no orders. Book a concert now!
           </Typography>
           <HomePoster />

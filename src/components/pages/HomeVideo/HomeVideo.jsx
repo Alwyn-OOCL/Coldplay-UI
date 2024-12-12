@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import './HomeVideo.css';
+import React, { useRef, useState } from "react";
+import "./HomeVideo.css";
 
 const HomeVideo = () => {
   const videoRef = useRef(null);
@@ -57,13 +57,14 @@ const HomeVideo = () => {
         loop
         onClick={togglePlayPause}
       >
-        <source src={require('../../../assets/videos/homevideo.mp4')} type="video/mp4" />
+        <source
+          src={require("../../../assets/videos/homevideo.mp4")}
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
       <div className="video-controls-left">
-        <button onClick={toggleMute}>
-          {isMuted ? 'Unmute' : 'Mute'}
-        </button>
+        <button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
         <input
           type="range"
           min="0"
@@ -81,4 +82,3 @@ const HomeVideo = () => {
 };
 
 export default HomeVideo;
-
