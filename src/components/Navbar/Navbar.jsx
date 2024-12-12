@@ -66,8 +66,18 @@ export default function Navbar () {
           {user ? (
               <div className='user-info'>
                 <div>
-                  <div className='user-level'>{user.level}</div>
-                  <div className='user-name'>{user.name}</div>
+                  <div className='user-level'>
+                    <span>Cold Rank: </span>
+                    <span>{user.level}</span>
+                  </div>
+                  <div className='user-name'>
+                    <span>Your Name: </span>
+                    <span>{user.name}</span>
+                  </div>
+                  <div className='user-name'>
+                    <span>Cold Point: </span>
+                    <span>{user.point ? user.point : 0}</span>
+                  </div>
                 </div>
                 <button className='logout-button' onClick={handleLogout}>Logout</button>
               </div>
