@@ -96,7 +96,7 @@ export default function ProductShopPage() {
           />
         </div>
         <div className="header">
-          <h1>Coldplay Exclusive Products</h1>
+          <h1>Coldplay Charity Exclusive Products</h1>
           <div className="cart-icon" onClick={handleCartIconClick}>
             <FaShoppingCart />
             <span className="cart-count">{selectedProducts.length}</span>

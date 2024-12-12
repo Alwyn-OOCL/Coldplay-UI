@@ -149,3 +149,9 @@
   height: 100%;
   text-align: center;
 }
+
+.exchange-charity-msg {
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import "./ExchangePopUp.css";
 import { exchange } from "../../../api/pages/exchangeApi";
-import baseApi from '../../../api/baseApi';
+import baseApi from "../../../api/baseApi";
 
 export default function ExchangePopUp({
   selectedProducts,
@@ -22,12 +22,12 @@ export default function ExchangePopUp({
 
   useEffect(() => {
     if (userId) {
-      baseApi.get(`/user/${userId}`)
-      .then(response => {
-        setUser(response.data.data);
-      })
-      .finally(() => {
-      });
+      baseApi
+        .get(`/user/${userId}`)
+        .then((response) => {
+          setUser(response.data.data);
+        })
+        .finally(() => {});
     }
   }, [userId]);
 
@@ -46,7 +46,7 @@ export default function ExchangePopUp({
   const groupedProducts = groupProducts(products);
   const totalPoints = groupedProducts.reduce(
     (sum, product) => sum + product.points * product.quantity,
-    0,
+    0
   );
 
   const handleIncrease = (productId) => {
@@ -60,7 +60,7 @@ export default function ExchangePopUp({
 
   const handleDecrease = (productId) => {
     const productIndex = products.findIndex(
-      (product) => product.productId === productId,
+      (product) => product.productId === productId
     );
     if (productIndex !== -1) {
       const updatedProducts = [...products];
@@ -71,16 +71,15 @@ export default function ExchangePopUp({
   };
 
   const handleExchange = async () => {
-
     const storedUserId = localStorage.getItem("userId");
 
     if (storedUserId) {
       exchange(storedUserId, totalPoints).then((response) => {
-        setUser({...user, point: response.data});
+        setUser({ ...user, point: response.data });
         setProducts([]);
         updateSelectedProducts([]);
         setSuccess(true);
-      })
+      });
     } else {
       navigate(`/login`);
     }
@@ -130,13 +129,20 @@ export default function ExchangePopUp({
                 </div>
               ))}
               <div className="exchange-product-total">
-                <span>Total Points:</span>
+                <span>Total Cold Point:</span>
                 <span>{totalPoints} points</span>
               </div>
               <div className="exchange-product-total">
-                <span>Your points:</span>
+                <span>Your Cold Point:</span>
                 <span>{user?.point}</span>
               </div>
+              <div className="exchange-product-total">
+                <span>Charity</span>
+                <span>${parseInt(totalPoints) * 10}</span>
+              </div>
+              <span className="exchange-charity-msg">
+                ** 1pt = $10 to charity
+              </span>
             </>
           ) : (
             <p>No products selected.</p>
@@ -150,13 +156,16 @@ export default function ExchangePopUp({
             </div>
           )}
           {!success ? (
-          <button
-            className="exchange-popup-button"
-            onClick={handleExchange}
-            disabled={totalPoints > user?.point}
-          >
-            Exchange
-          </button>) : <></>}
+            <button
+              className="exchange-popup-button"
+              onClick={handleExchange}
+              disabled={totalPoints > user?.point}
+            >
+              Exchange
+            </button>
+          ) : (
+            <></>
+          )}
           <button className="exchange-popup-button" onClick={onClose}>
             Close
           </button>
