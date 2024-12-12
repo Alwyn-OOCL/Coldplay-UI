@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Promotion.css";
 import baseApi from "../../../api/baseApi";
 import { charity } from "../../../data/charity";
@@ -13,7 +12,10 @@ const Promotion = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [isError, setIsError] = useState(false);
-  const navigate = useNavigate();
+
+  console.log(alertMessage);
+  console.log(isError);
+
 
   useEffect(() => {
     if (!isHovered) {
@@ -38,6 +40,7 @@ const Promotion = () => {
     setShowAlert(true);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleConfirmRedeem = async () => {
     try {
       const response = await baseApi.post("/code/validation", { code });
