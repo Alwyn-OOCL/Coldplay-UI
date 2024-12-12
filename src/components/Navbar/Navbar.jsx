@@ -54,7 +54,7 @@ export default function Navbar () {
       <div className='container navbar-container'>
         <img src={logo} alt='Logo' onClick={handleLogoClick} style={{ height: 'auto', width: '70px' }}/>
         <div className='navbar-logo' onClick={handleLogoClick}>
-          Coldplay World Tour <span className='logo-break'>Ticketing System</span>
+          ColdplayGlobal
         </div>
         <div className='navbar-links'>
           <a href='/' className='nav-link'>Homepage</a>
